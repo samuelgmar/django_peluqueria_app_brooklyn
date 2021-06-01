@@ -1,0 +1,1 @@
+web: gunicorn peluqueria.wsgi --log-file -
