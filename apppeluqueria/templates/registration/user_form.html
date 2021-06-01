@@ -1,0 +1,258 @@
+<!-- esta perfecta, falta solo menu responsive -->
+{% load static %}
+{% load i18n %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/header/styles.css' %}">
+<link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome-font-awesome.min.css'>
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<link rel="stylesheet" href="{% static 'css/client/client.css' %}">
+<link rel="stylesheet" href="{% static 'css/header/styles.css' %}">
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+<body class="body-home" style="background: url({% static 'img/fondo-barber-orange.jpg' %}) no-repeat center center fixed;background-size:cover;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;   width: 100%;overflow:auto">
+    <div class="conta-acco">
+        <div class="loading" style="background: -prefix-linear-gradient(rgba(246, 157, 60,1), rgba(63, 135, 166,1));background: linear-gradient(rgba(246, 157, 60,1), rgba(63, 135, 166,1));position: fixed; height: 100%; width: 100%; display: flex;justify-content: center;align-items: center;    z-index: 99999;"> 
+            <div id="preloader">
+                <img class="l1" src="{% static 'img/logotipon111.png' %}">
+                <div id="loader"></div>
+            </div>
+        </div>
+        <div class="top-header">
+            {% include "header.html" %}
+        </div>
+        <div class="contain-menu">
+            <div class="menu">
+                <div>
+                    <p><a href="{% url 'index' %}#Home" class="nav-scroll active home" onclick="$('.menu_toggler').click();quitarGrid();">{% trans "Home" %}</a></p>
+                    {% if user.is_authenticated %}
+                    <p><a href="{% url 'user_update' user %}"><span style="display: table-cell; vertical-align: middle"></span><span style="display: table-cell; vertical-align: middle">{% trans "Account" %}</span></a></p>
+                    {% endif %}
+                    <p><a href="{% url 'index' %}#Services" class="nav-scroll services" onclick="$('.menu_toggler').click();quitarGrid();">{% trans "Services" %}</a></p>
+                    <p><a href="{% url 'index' %}#Galery" class="nav-scroll galery" onclick="$('.menu_toggler').click();mostrarGrid();">{% trans "Galery" %}</a></p>
+                    <p><a href="{% url 'index' %}#Contact" class="nav-scroll contact" onclick="$('.menu_toggler').click();quitarGrid();">{% trans "Contact" %}</a></p>
+                    <p><a href="{% url 'index' %}#Redes" class="nav-scroll redes" onclick="$('.menu_toggler').click();quitarGrid();">{% trans "Social Networks" %}</a></p>
+                    <p><a href="{% url 'index' %}#Politica" class="nav-scroll politica" onclick="$('.menu_toggler').click();quitarGrid();">{% trans "Privacy Policy" %}</a></p>
+                    {% if request.user.groups.all.0.name == 'clientes' %}
+                    <p><a href="{% url 'client' %}">{% trans "Book an appointment" %}</a></p>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                    <p><a href="{% url 'logout'%}?next={{request.path}}">{% trans "Log out" %}</a></p>
+                    {% else %}
+                    <p><a href="{% url 'index' %}">{% trans "Log in" %}</a></p>
+                    {% endif %}
+
+                    {% if request.user.groups.all.0.name == 'jefes' or request.user.groups.all.0.name == 'trabajadores'%}
+                    <p><h1>{% trans "Administrator functions" %}</h1></p>
+                    {% if request.user.groups.all.0.name == 'trabajadores' %}
+                    <p><a href="{% url 'worker' %}">{% trans "Book an appointment" %}</a></p>
+                    {% endif %}
+                    <p><a href="{% url 'users' %}"><span style="display: table-cell; vertical-align: middle"></span><span style="display: table-cell; vertical-align: middle">{% trans "Clients" %}</span></a></p>   
+                    {% if request.user.groups.all.0.name == 'jefes' %}
+                    <p><a href="{% url 'galeria' %}">{% trans "Edit Gallery" %}</a></p>
+                    <p><a href="{% url 'boss' %}">{% trans "Book an appointment" %}</a></p>
+                    <p><a href="{% url 'workers' %}"><span style="display: table-cell; vertical-align: middle"></span><span style="display: table-cell; vertical-align: middle">{% trans "Workers" %}</span></a></p>
+                    <p><a href="{% url 'horas' %}"><span style="display: table-cell; vertical-align: middle"></span><span style="display: table-cell; vertical-align: middle">{% trans "hours" %}</span></a></p>
+                    {% endif %}
+                    <p><a href="{% url 'categories' %}"><span style="display: table-cell; vertical-align: middle"></span><span style="display: table-cell; vertical-align: middle">{% trans "Services and Categories" %}</span></a></p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="bgmenu"></div>
+        </div>
+
+        <div class="sections" style="position:static;height:auto;">
+            {% get_available_languages as LANGUAGES %}
+            {% get_language_info_list for LANGUAGES as languages %}
+        
+            <div class="fixed-action-btn" onclick="$('.fixed-action-btn').toggleClass('active');">
+              <form action="{% url 'set_language' %}" method="post" id="myform">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{redirect_to}}" >
+                  <a class="btn-floating btn-large teal " >
+                  <i class="large material-icons" >language</i>
+                  </a>
+                  <ul>
+                    {% for language in languages %}
+                    <li>
+                      <button class="btn transparent" type="submit" value="{{language.code}}" name="language">
+                        <img class="bandera" {% if language.code == "es" %} src="{% static 'img/spain.png' %}" {% else %} src="{% static '/img/england.png' %}" {% endif %}> 
+                      </button>
+                    </li>
+                    {% endfor %}
+                  </ul>
+              </form>
+            </div>
+            <section id="AccountTemplate" class="container-fluid show align-items-center">
+                <div class="container">
+                    <p>{% trans "update your profile" %}</p>
+                    <div class="addUser">
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-25">
+                                    {{ form.phone.errors }}
+                                    <label for="{{ form1.phone.id_for_label }}">{% trans "Phone" %}</label> 
+                                </div>
+                                <div class="col-75">
+                                    {{ form.phone }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-25">
+                                    {{ form1.username.errors }}
+                                    {{ form1.username.label_tag }}
+                                </div>
+                                <div class="col-75">
+                                    {{ form1.username }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-25">
+                                    {{ form1.first_name.errors }}
+                                    {{ form1.first_name.label_tag }}
+                                </div>
+                                <div class="col-75">
+                                    {{ form1.first_name }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-25">
+                                    {{ form1.last_name.errors }}
+                                    {{ form1.last_name.label_tag }}
+                                </div>
+                                <div class="col-75">
+                                    {{ form1.last_name }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-25">
+                                    {{ form1.email.errors }}
+                                    {{ form1.email.label_tag }}
+                                </div>
+                                <div class="col-75">
+                                    {{ form1.email }}
+                                </div>
+                            </div>
+                            <input type="hidden" name="accion" value="1">
+                            <input type="submit" value="{% trans "Update" %}" /> <br><br><br>
+                        </form>
+                        <hr style="border: 1px solid rgb(177, 177, 177);">
+                        <form method="post">
+                            {% csrf_token %}   
+
+                            <input type="hidden" class="form-control" name="phone" value="{{ form.phone.value }}" maxlength="17" required="" id="id_phone">             
+                            <div class="row">
+                                <div class="col-25">
+                                    {{ form2.old_password.errors }}
+                                    {{ form2.old_password.label_tag }}
+                                </div>
+                                <div class="col-75">
+                                    <input type="password" name="old_password" autocomplete="current-password" required id="id_old_password">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-25">
+                                    {{ form2.new_password1.errors }}
+                                    {{ form2.new_password1.label_tag }}
+                                </div>
+                                <div class="col-75">
+                                    {{ form2.new_password1 }} 
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-25">
+                                    {{ form2.new_password2.errors }}
+                                    {{ form2.new_password2.label_tag }}
+                                </div>
+                                <div class="col-75">
+                                    {{ form2.new_password2 }} 
+                                </div>
+                            </div>
+                            <input type="hidden" name="accion" value="2">
+                            <input type="submit" value="{% trans "Update" %}" />
+                        </form>    
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+{% endblock %}
+{% include "scripts.html" %}
+<script src="{% static '/js/header/script.js' %}"></script>
+<script>
+    function quitarGrid(){
+        $('.grid-gallery').css('display','none');
+    }
+    function mostrarGrid(){
+        $('.grid-gallery').css('display','grid');
+    }
+    $(document).ready(function(){
+
+        $('.bt_close ').stop().click(function(){
+            $('.top-header').css('display','block');
+            $('.fullscreen').css('display','none');
+        });
+        
+        $('.grid-gallery a.grid-gallery__item img').stop().click(function(){
+            var image = $(this).attr('src')
+            $('.fullscreen .container .row div img').attr('src',image);
+            $('.fullscreen').css('display','block');
+            $('.top-header').css('display','none');
+        });
+    });
+    $(function(){
+        $('.nav-scroll').click(function(){
+          $('.nav-scroll.active').removeClass('active');
+          $('.show').removeClass('show');
+          panelId = $(this).attr('href');
+          $(panelId).addClass('show');
+          $(this).addClass('active');
+        });
+    });
+    
+
+$(document).ready(function () {
+    var URLactual = window.location.toString();
+    if(URLactual.includes('#Home')){
+        $('.home').click();
+        $('.menu_toggler').click();
+    }else if(URLactual.includes('#Services')){
+        $('.services').click();
+        $('.menu_toggler').click();
+    }else if(URLactual.includes('#Galery')){
+        $('.galery').click();
+        $('.menu_toggler').click();
+    }else if(URLactual.includes('#Contact')){
+        $('.contact').click();
+        $('.menu_toggler').click();
+    }else if(URLactual.includes('#Redes')){
+        $('.redes').click();
+        $('.menu_toggler').click();
+    }else if(URLactual.includes('#Politica')){
+        $('.politica').click();
+        $('.menu_toggler').click();
+    }
+    setTimeout(function () {
+        $('.loading').hide().ajaxStart(function() { 
+            $(this).show(); 
+           }).ajaxStop(function() { 
+            $(this).hide(); 
+           });
+      }, 2000);
+});
+
+    document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.fixed-action-btn');
+    var instances = M.FloatingActionButton.init(elems);
+  });
+</script>

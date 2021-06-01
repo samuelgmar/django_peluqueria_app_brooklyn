@@ -1,0 +1,229 @@
+{% load static %}
+{% load i18n %}
+<link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome-font-awesome.min.css'>
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<link rel="stylesheet" href="{% static 'css/client/client.css' %}">
+<link rel="stylesheet" href="{% static 'css/header/styles.css' %}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+{% block content %}
+<body class="work-list" style="background-image:url({% static 'img/worker-fondo.jpg' %});">
+    <div class="grid-container-role">
+        <div class="loading" style="position: fixed; height: 100%; width: 100%; background: -prefix-linear-gradient(button, #f9f295, #ff7f9f);background: linear-gradient(to top, #f9f295, #ff7f9f);display: flex;justify-content: center;align-items: center;    z-index: 99999;"> 
+            <div id="preloader">
+                <img class="l1" src="{% static 'img/logotipon111.png' %}">
+                <div id="loader"></div>
+            </div>
+        </div>
+        <div class="a">
+            <div class="top-header">
+                {% include "header.html" %}
+            </div>
+            <div class="contain-menu">
+                <div class="menu">
+                    <div>
+                        <p><a href="{% url 'index' %}#Home" class="nav-scroll active home" onclick="$('.menu_toggler').click();quitarGrid();">{% trans "Home" %}</a></p>
+                        {% if user.is_authenticated %}
+                        <p><a href="{% url 'user_update' user %}"><span style="display: table-cell; vertical-align: middle"></span><span style="display: table-cell; vertical-align: middle">{% trans "Account" %}</span></a></p>
+                        {% endif %}
+                        <p><a href="{% url 'index' %}#Services" class="nav-scroll services" onclick="$('.menu_toggler').click();quitarGrid();">{% trans "Services" %}</a></p>
+                        <p><a href="{% url 'index' %}#Galery" class="nav-scroll galery" onclick="$('.menu_toggler').click();mostrarGrid();">{% trans "Galery" %}</a></p>
+                        <p><a href="{% url 'index' %}#Contact" class="nav-scroll contact" onclick="$('.menu_toggler').click();quitarGrid();">{% trans "Contact" %}</a></p>
+                        <p><a href="{% url 'index' %}#Redes" class="nav-scroll redes" onclick="$('.menu_toggler').click();quitarGrid();">{% trans "Social Networks" %}</a></p>
+                        <p><a href="{% url 'index' %}#Politica" class="nav-scroll politica" onclick="$('.menu_toggler').click();quitarGrid();">{% trans "Privacy Policy" %}</a></p>
+                        {% if request.user.groups.all.0.name == 'clientes' %}
+                        <p><a href="{% url 'client' %}">{% trans "Book an appointment" %}</a></p>
+                        {% endif %}
+                        {% if user.is_authenticated %}
+                        <p><a href="{% url 'logout'%}?next={{request.path}}">{% trans "Log out" %}</a></p>
+                        {% else %}
+                        <p><a href="{% url 'index' %}">{% trans "Log in" %}</a></p>
+                        {% endif %}
+    
+                        {% if request.user.groups.all.0.name == 'jefes' or request.user.groups.all.0.name == 'trabajadores'%}
+                        <p><h1>{% trans "Administrator functions" %}</h1></p>
+                        {% if request.user.groups.all.0.name == 'trabajadores' %}
+                        <p><a href="{% url 'worker' %}">{% trans "Book an appointment" %}</a></p>
+                        {% endif %}
+                        <p><a href="{% url 'users' %}"><span style="display: table-cell; vertical-align: middle"></span><span style="display: table-cell; vertical-align: middle">{% trans "Clients" %}</span></a></p>   
+                        {% if request.user.groups.all.0.name == 'jefes' %}
+                        <p><a href="{% url 'galeria' %}">{% trans "Edit Gallery" %}</a></p>
+                        <p><a href="{% url 'boss' %}">{% trans "Book an appointment" %}</a></p>
+                        <p><a href="{% url 'workers' %}"><span style="display: table-cell; vertical-align: middle"></span><span style="display: table-cell; vertical-align: middle">{% trans "Workers" %}</span></a></p>
+                        <p><a href="{% url 'horas' %}"><span style="display: table-cell; vertical-align: middle"></span><span style="display: table-cell; vertical-align: middle">{% trans "hours" %}</span></a></p>
+                        {% endif %}
+                        <p><a href="{% url 'categories' %}"><span style="display: table-cell; vertical-align: middle"></span><span style="display: table-cell; vertical-align: middle">{% trans "Services and Categories" %}</span></a></p>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="bgmenu"></div>
+            </div>
+            <div class="addt text-center">
+                <div id="add-client">
+                    <div>
+                        <button class="volver" onclick="return_anadir_trabajador()">{% trans "Return" %}</button>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <div>
+                              <td><label><p class="error-pass">{% for field in form5 %}{% if field.errors %}{% for error in field.errors %}{{ error|escape }}<br>{% endfor %}{% endif %}{% endfor %}</p></label></td><br>
+                              <td><label>{% trans "User" %}</label></td>
+                              <br>
+                              <td>{{ form5.username }}</td>
+                            </div>
+                            <div>
+                              <td><label>{% trans "Email" %}</label></td><br>
+                              <td class="form-control">{{ form5.email }}</td>
+                            </div>
+                            <div>
+                              <td><label>{% trans "Phone number" %}</label></td><br>
+                              <td class="form-control">{{ form5.phone }}</td>
+                            </div>
+                            <div>
+                              <td><label>{% trans "Password" %}</label></td><br>
+                              <td class="form-control">{{ form5.password1 }}</td>
+                            </div>
+                            <div>
+                              <td><label>{% trans "Password confirmation" %}</label></td><br>
+                              <td class="form-control">{{ form5.password2 }}</td>
+                            </div>
+                            <div>
+                                <input class="register_button" type="submit" value="{% trans "Sign in" %}"><br>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="b" style=" background: -prefix-linear-gradient(rgba(246, 157, 60,.5), rgba(63, 135, 166,.7));background: linear-gradient(rgba(246, 157, 60,.5), rgba(63, 135, 166,.7));">
+            <div class="workersList">
+                <p>{% trans "workers list" %}</p>
+                <button class="add" onclick="anadir_trabajador()">{% trans "add worker" %}</button>
+                <div class="table-responsive-final">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">{% trans "Profile" %}</th>
+                                <th scope="col">{% trans "Phone" %}</th>
+                                <th scope="col">{% trans "E-mail" %}</th>
+                                <th scope="col">{% trans "Name" %}</th>
+                                <th scope="col">{% trans "Actions" %}</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {% if trabajadores %}
+                            {% for trabajador in trabajadores %}
+                            <tr> 
+                                {% for user in users %}
+                                    {% if trabajador.usuario_id == user.id %}
+                                        <td scope="row"><a href="{% url 'worker_update' user %}">{{ trabajador }}{% if trabajador == '' %} NULL {% endif %}</a></td>
+                                        <td>{{ trabajador.phone }}{% if trabajador.phone == '' %} NULL {% endif %}</td>
+                                        <td>{{ user.email }}{% if user.email == '' %} NULL {% endif %}</td>
+                                        <td>{{ user.first_name }}{% if user.first_name == '' %} NULL {% endif %}</td>
+                                        <td><form action="" method="POST" id="userDeleteForm">{% csrf_token %}<input type="hidden" name="userDelete" value="{{ user }}"><p class="remove" onclick="borrarCliente()">{% trans "Delete" %}</p></form></td>
+                                    {% endif %} 
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                            {% endif %} 
+                          </tbody>
+                    </table>
+                </div>
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if trabajadores.has_next %}
+                            <a href="?page={{ trabajadores.paginator.num_pages }}">{% trans "last" %}</a>
+                        {% endif %}
+                        {% if trabajadores.has_previous %}
+                            <a href="?page={{ trabajadores.previous_page_number }}">{% trans "previous" %}</a>
+                        {% endif %}
+                        <span class="current">
+                            {% trans "Page" %} {{ trabajadores.number }} {% trans "of" %} {{ trabajadores.paginator.num_pages }}.
+                        </span>
+                        {% if trabajadores.has_previous %}
+                            <a href="?page=1">{% trans "first" %}</a>
+                        {% endif %}
+                        {% if trabajadores.has_next %}
+                            <a href="?page={{ trabajadores.next_page_number }}">{% trans "next" %}</a>
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="c">
+
+        </div>
+    </div>
+</body>
+{% endblock %}
+{% include "scripts.html" %}
+<script src="{% static '/js/header/script.js' %}"></script>
+<script src="{% static '/js/header/script1.js' %}"></script>
+<script>
+    function quitarGrid(){
+        $('.grid-gallery').css('display','none');
+    }
+    function mostrarGrid(){
+        $('.grid-gallery').css('display','grid');
+    }
+    $(document).ready(function(){
+
+        $('.bt_close ').stop().click(function(){
+            $('.top-header').css('display','block');
+            $('.fullscreen').css('display','none');
+        });
+        
+        $('.grid-gallery a.grid-gallery__item img').stop().click(function(){
+            var image = $(this).attr('src')
+            $('.fullscreen .container .row div img').attr('src',image);
+            $('.fullscreen').css('display','block');
+            $('.top-header').css('display','none');
+        });
+    });
+    $(function(){
+        $('.nav-scroll').click(function(){
+          $('.nav-scroll.active').removeClass('active');
+          $('.show').removeClass('show');
+          panelId = $(this).attr('href');
+          $(panelId).addClass('show');
+          $(this).addClass('active');
+        });
+    });
+    
+
+$(document).ready(function () {
+    var URLactual = window.location.toString();
+    if(URLactual.includes('#Home')){
+        $('.home').click();
+        $('.menu_toggler').click();
+    }else if(URLactual.includes('#Services')){
+        $('.services').click();
+        $('.menu_toggler').click();
+    }else if(URLactual.includes('#Galery')){
+        $('.galery').click();
+        $('.menu_toggler').click();
+    }else if(URLactual.includes('#Contact')){
+        $('.contact').click();
+        $('.menu_toggler').click();
+    }else if(URLactual.includes('#Redes')){
+        $('.redes').click();
+        $('.menu_toggler').click();
+    }else if(URLactual.includes('#Politica')){
+        $('.politica').click();
+        $('.menu_toggler').click();
+    }
+    setTimeout(function () {
+        $('.loading').hide().ajaxStart(function() { 
+            $(this).show(); 
+           }).ajaxStop(function() { 
+            $(this).hide(); 
+           });
+      }, 2000);
+});
+
+    document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.fixed-action-btn');
+    var instances = M.FloatingActionButton.init(elems);
+  });
+</script>
+

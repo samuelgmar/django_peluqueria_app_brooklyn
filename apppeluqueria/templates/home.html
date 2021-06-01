@@ -1,0 +1,418 @@
+{% load static %}
+{% load i18n %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/header/styles.css' %}">
+<link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome-font-awesome.min.css'>
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<link rel="stylesheet" href="{% static 'css/client/client.css' %}">
+<link rel="stylesheet" href="{% static 'css/header/styles.css' %}">
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+<body class="body-home" style="background: url({% static 'img/bgg1.png' %}) no-repeat center center fixed;background-size:cover;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;    height: 100vh;width: 100vw;">
+  
+    <div class="loading" style="position: absolute; height: 100%; width: 100%; background: -prefix-linear-gradient(button, #f9f295, #ff7f9f);background: linear-gradient(to top, #f9f295, #ff7f9f);display: flex;justify-content: center;align-items: center;    z-index: 99999;"> 
+        <div id="preloader">
+            <img class="l1" src="{% static 'img/logotipon111.png' %}">
+            <div id="loader"></div>
+        </div>
+    </div>
+    <div class="top-header">
+        {% include "header.html" %}
+    </div>
+    <div class="contain-menu">
+        <div class="menu">
+            <div>
+                <p><a href="#Home" class="nav-scroll active home" onclick="$('.menu_toggler').click();quitarGrid();">{% trans "Home" %}</a></p>
+                {% if user.is_authenticated %}
+                <p><a href="{% url 'user_update' user %}"><span style="display: table-cell; vertical-align: middle"></span><span style="display: table-cell; vertical-align: middle">{% trans "Account" %}</span></a></p>
+                {% endif %}
+                <p><a href="#Services" class="nav-scroll services" onclick="$('.menu_toggler').click();quitarGrid();">{% trans "Services" %}</a></p>
+                <p><a href="#Galery" class="nav-scroll galery" onclick="$('.menu_toggler').click();mostrarGrid();">{% trans "Galery" %}</a></p>
+                <p><a href="#Contact" class="nav-scroll contact" onclick="$('.menu_toggler').click();quitarGrid();">{% trans "Contact" %}</a></p>
+                <p><a href="#Redes" class="nav-scroll redes" onclick="$('.menu_toggler').click();quitarGrid();">{% trans "Social Networks" %}</a></p>
+                <p><a href="#Politica" class="nav-scroll politica" onclick="$('.menu_toggler').click();quitarGrid();">{% trans "Privacy Policy" %}</a></p>
+                {% if request.user.groups.all.0.name == 'clientes' %}
+                <p><a href="{% url 'client' %}">{% trans "Book an appointment" %}</a></p>
+                {% endif %}
+                {% if user.is_authenticated %}
+                <p><a href="{% url 'logout'%}?next={{request.path}}">{% trans "Log out" %}</a></p>
+                {% else %}
+                <p><a href="{% url 'index' %}">{% trans "Log in" %}</a></p>
+                {% endif %}
+
+                {% if request.user.groups.all.0.name == 'jefes' or request.user.groups.all.0.name == 'trabajadores'%}
+                <p><h1>{% trans "Administrator functions" %}</h1></p>
+                {% if request.user.groups.all.0.name == 'trabajadores' %}
+                <p><a href="{% url 'worker' %}">{% trans "Book an appointment" %}</a></p>
+                {% endif %}
+                <p><a href="{% url 'users' %}"><span style="display: table-cell; vertical-align: middle"></span><span style="display: table-cell; vertical-align: middle">{% trans "Clients" %}</span></a></p>   
+                {% if request.user.groups.all.0.name == 'jefes' %}
+                <p><a href="{% url 'galeria' %}">{% trans "Edit Gallery" %}</a></p>
+                <p><a href="{% url 'boss' %}">{% trans "Book an appointment" %}</a></p>
+                <p><a href="{% url 'workers' %}"><span style="display: table-cell; vertical-align: middle"></span><span style="display: table-cell; vertical-align: middle">{% trans "Workers" %}</span></a></p>
+                <p><a href="{% url 'horas' %}"><span style="display: table-cell; vertical-align: middle"></span><span style="display: table-cell; vertical-align: middle">{% trans "hours" %}</span></a></p>
+                {% endif %}
+                <p><a href="{% url 'categories' %}"><span style="display: table-cell; vertical-align: middle"></span><span style="display: table-cell; vertical-align: middle">{% trans "Services and Categories" %}</span></a></p>
+                {% endif %}
+            </div>
+        </div>
+        <div class="bgmenu"></div>
+    </div>
+    <div class="sections">
+        {% get_available_languages as LANGUAGES %}
+        {% get_language_info_list for LANGUAGES as languages %}
+      
+        <div class="fixed-action-btn" onclick="$('.fixed-action-btn').toggleClass('active');">
+          <form action="{% url 'set_language' %}" method="post" id="myform">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{redirect_to}}" >
+              <a class="btn-floating btn-large teal " >
+              <i class="large material-icons" >language</i>
+              </a>
+              <ul>
+                {% for language in languages %}
+                <li>
+                  <button class="btn transparent" type="submit" value="{{language.code}}" name="language">
+                    <img class="bandera" {% if language.code == "es" %} src="{% static 'img/spain.png' %}" {% else %} src="{% static '/img/england.png' %}" {% endif %}> 
+                  </button>
+                </li>
+                {% endfor %}
+              </ul>
+          </form>
+        </div>
+        <section id="Home" class="content-section show align-items-center" style="height: 100%;display: flex;justify-content: center; align-items: center;background: linear-gradient(to top,rgba(249, 242, 149,.2), rgba(255, 127, 159,.2));">
+            {% if not user.is_authenticated %} 
+                <div class="all-body" style="height: 100%;;">
+                <div class="backblur">
+                    <div class="login active">
+                        <p class="login-head">{% trans "Log in" %}</p><br>
+                        <p class="login-twohead">{% trans "Sign in to book appointments" %}</p><br>
+                        <form method="post">
+                        {% csrf_token %}
+                            <div>
+                              <td><label>{% if messages %}{% for message in messages %}<p class="error-pass">{{ message }}</p>{% endfor %}{% endif %}</label></td><br>
+                              <td><label>{% trans "User" %}</label></td>
+                              <br>
+                              <td>{{ form.username }}</td>
+                            </div>
+                            <div>
+                              <td><label>{% trans "Password" %}</label></td><br>
+                              <td class="form-control">{{ form.password }}</td>
+                            </div>
+                            <div>
+                                <input class="button" type="hidden" name="iniciar_sesion" value="iniciar_sesion">
+                                <input class="button" type="submit" value="{% trans "Log in" %}"><br>
+                            </div>
+                            <div class="division">
+                                <div class="line l"></div>
+                                    <span>OR</span>
+                                    <div class="line r">
+                                </div>
+                            </div>
+                            <p class="regist">{% trans "Sign up" %}</p>
+                            <p class="recov">{% trans "Have you forgotten your password?" %}</p>
+                        </form>
+                    </div>
+    
+                    <div class="register">
+                        <p class="register-head">{% trans "New user" %}</p><br>
+                        <p class="register-twohead">{% trans "Sign up to book appointments" %}</p><br>
+                        <form method="post">
+                        {% csrf_token %}
+                            <div>
+                              <td><label><p class="error-pass">{% for field in form1 %}{% if field.errors %}{% for error in field.errors %}{{ error|escape }}<br>{% endfor %}{% endif %}{% endfor %}</p></label></td><br>
+                              <td><label>{% trans "User" %}</label></td>
+                              <br>
+                              <td>{{ form1.username }}</td>
+                            </div>
+                            <div>
+                              <td><label>{% trans "Email" %}</label></td><br>
+                              <td class="form-control">{{ form1.email }}</td>
+                            </div>
+                            <div>
+                              <td><label>{% trans "Phone number" %}</label></td><br>
+                              <td class="form-control">{{ form1.phone }}</td>
+                            </div>
+                            <div>
+                              <td><label>{% trans "Password" %}</label></td><br>
+                              <td class="form-control">{{ form1.password1 }}</td>
+                            </div>
+                            <div>
+                              <td><label>{% trans "Password confirmation" %}</label></td><br>
+                              <td class="form-control">{{ form1.password2 }}</td>
+                            </div>
+                            <div>
+                                <input class="button" type="hidden" name="iniciar_sesion" value="registrarse">
+                                <input class="register_button" type="submit" value="{% trans "Sign in" %}"><br>
+                            </div>
+                            <div class="division">
+                                <div class="line l"></div>
+                                    <span>OR</span>
+                                    <div class="line r">
+                                </div>
+                            </div>
+                            <p class="logg">{% trans 'Log in' %}</p>
+                            <p class="recove">{% trans 'Have you forgotten your password?' %}</p>
+                        </form>
+                    </div>
+    
+                    <div class="recover">
+                        <p class="recover-head">{% trans "Recover password" %}</p><br>
+                        <p class="recover-twohead">{% trans "Recover your password in one easy step" %}</p><br>
+                        <form method="post">
+                        {% csrf_token %}
+                            <div>
+                              <td><label>{% trans "Email" %}</label></td><br>
+                              <td class="form-control">{{ form2.email }}</td>
+                            </div>
+                            <div>
+                                <input class="button" type="hidden" name="iniciar_sesion" value="recuperar">
+                                <input class="recover_button" type="submit" value="{% trans "Recover password" %}"><br>
+                            </div>
+                            <div class="division">
+                                <div class="line l"></div>
+                                    <span>OR</span>
+                                    <div class="line r">
+                                </div>
+                            </div>
+                            <p class="logge">{% trans "Iniciar sesión - Registrar" %}</p>
+                        </form>
+                    </div>
+                </div>
+                </div>
+            {% else %}
+            <div class="all-body-login">
+                <div class="container-fluid align-items-center contai">
+                    <div class="row">
+                        <div class="col">
+                            <h2>{% trans "WELCOME" %} {{ request.user.username }} </h2>
+                            <hr>
+                            <h3><br>{% trans "what are you waiting for to book an appointment?" %}<br><p>💈🔥🔥👱👩‍🦳🔥🔥💈</p></h3>
+                            {% if request.user.groups.all.0.name == 'clientes' %}
+                            <a href="{% url 'client' %}"><button>{% trans "Book an appointment" %}</button></a>
+                            {% endif %}
+                            {% if request.user.groups.all.0.name == 'trabajadores' %}
+                            <a href="{% url 'worker' %}"><button>{% trans "Book an appointment" %}</button></a>
+                            {% endif %}
+                            {% if request.user.groups.all.0.name == 'jefes' %}
+                            <a href="{% url 'boss' %}"><button>{% trans "Book an appointment" %}</button></a>
+                            {% endif %}                         
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </section>
+        <section id="Services" class="content-section" style="background-image: url({% static 'img/ff1.png' %});">
+            <div class="container-fluid jumbotron align-items-center">
+                <div class="col">
+                    <div class=".col-12 jumbotron align-items-center cate" style="margin-bottom: 7rem;padding-top:7rem; background: -prefix-linear-gradient(button, #f9f295, #ff7f9f);background: linear-gradient(to top, #f9f295, #ff7f9f);">
+                        <h1>{% trans "CATEGORIES AND SERVICES" %}</h1>
+                        {% if categorias %}
+                            {% for categoria in categorias %}
+                                <h2>{{ categoria }}</h2>
+                                <br>
+                                <hr style="margin: 13px 0;margin-top:0; border-top-color:white;">
+                                {% for servicio in servicios %}
+                                    {% if servicio.categoria == categoria  %}
+                                    <div class="row" style="padding:0 6%">
+                                        <div class="col-8 text-left"><p style="color:rgb(71, 68, 53);">{{ servicio }}</p></div>
+                                        <div class="col-4"><p style="color:rgb(71, 68, 53);">{{ servicio.precio }}€ ({{ servicio.duracion }}mints)</p></div>   
+                                    </div>
+                                    <!--<hr style="margin: 0px 0;margin-top:0; border-top-color:black;"-->
+                                    {% endif %}
+                                {% endfor %}
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Galery" class="content-section">
+            <div class="fullscreen">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <img src="" alt="" title="" class="bt_close"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-gallery" style="display:none">
+                {% if galeria %}
+                    {% for foto in galeria %}
+                        <a class="grid-gallery__item">
+                            <img class="grid-gallery__image" src="{{ foto.imagen.url }}">
+                        </a>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </section>
+        <section id="Contact" class="content-section">
+            <div class="map">
+                <iframe id="iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.1673709017396!2d-0.7922895843360295!3d37.832967416581766!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd630f0ef068468b%3A0xfa8897cc8f0a078b!2sBrooklyn%20Barber%20%7C%20Barber%C3%ADa%2Fpeluquer%C3%ADa%20Murcia%20%7C%20San%20Pedro%20del%20Pinatar!5e0!3m2!1ses!2ses!4v1621686397026!5m2!1ses!2ses" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" ></iframe>
+            </div>
+            <div class="container-fluid jumbotron align-items-center ">
+                <div class="row">
+                    <div class="col-md-4 text-dark">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>{% trans "Address" %}</h3>
+                        <a href="https://www.google.com/maps/place/Brooklyn+Barber+%7C+Barbería%2Fpeluquería+Murcia+%7C+San+Pedro+del+Pinatar,+Calle+Cervantes,+1,+30740+San+Pedro+del+Pinatar,+Murcia/@37.8329632,-0.7901009,17z/data=!4m2!3m1!1s0xd630f0ef068468b:0xfa8897cc8f0a078b">Cervantes, 1 <br> 30740 <br> San Pedro del Pinatar, Murcia</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 text-dark">
+                        <i class="fas fa-phone-alt"></i>
+                        <h3>{% trans "Lets Talk" %}</h3>	
+                        <a href="tel:+34697276001">697276001</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 text-dark">
+                        <i class="fas fa-envelope"></i>
+                        <h3>{% trans "General Support" %}</h3>	
+                        <a href="mailto:samuelgarciamapriv@gmail.com">samuelgarciamapriv@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Redes" class="content-section bg-light" style="background-image: url({% static 'img/palmeras.jpg' %});">
+            <div class="cont">
+                <div class="container">
+                    <div class="row justify-content-md-center" style="width: 100%;">
+                        <div class="col-md-8 align-center">
+                            <h2 class="pb-3 mbr-fonts-style display-2">
+                                {% trans "FOLLOW US!" %}
+                            </h2>
+                            <div class="social-list pl-0 mb-0">
+                                <a href="https://twitter.com/mobirise" target="_blank">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="https://www.facebook.com/pages/Mobirise/1616226671953247" target="_blank">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="https://instagram.com/mobirise" target="_blank">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="https://www.youtube.com/c/mobirise" target="_blank">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                                <a href="https://plus.google.com/u/0/+Mobirise" target="_blank">
+                                    <i class="fab fa-google-plus-g"></i>
+                                </a>
+                                <a href="https://www.behance.net/Mobirise" target="_blank">
+                                    <i class="fab fa-behance"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Politica" class="content-section">
+            <div class="contenedor">
+                <div>
+                    <h2>{% trans "PRIVACY POLICY" %}</h2>
+                    
+                    <p> {% trans "This Privacy Policy sets forth the terms under which BROOKLYN uses and protects the information that is provided by its users when using its website. This company is committed to the security of its users' data. When we ask you to provide personal information by which you can be identified, we do so with the assurance that it will only be used in accordance with the terms of this document. However this Privacy Policy may change over time or be updated so we recommend and emphasize that you continually review this page to ensure that you agree to any such changes." %}  
+                        <br><br><strong>{% trans "Information that is collected" %}</strong><br><br>
+                        {% trans "Our website may collect personal information such as your name, contact information such as your email address and demographic information. Also, when necessary, specific information may be required to process an order or make a delivery or billing." %}
+                        <br><br><strong>{% trans "Use of the information collected" %}</strong><br><br>
+                        {% trans "Our website uses the information in order to provide the best possible service, particularly to keep track of users, to keep track of orders where applicable, and to improve our products and services.  We may periodically send emails through our site with special offers, new products and other promotional information that we think may be relevant to you or may be of benefit to you, these emails will be sent to the address you provide and may be unsubscribed from at any time." %}
+                        {% trans "BROOKLYN is highly committed to fulfilling our commitment to keeping your information secure. We use the most advanced systems and constantly update them to ensure that there is no unauthorized access." %}
+                    </p>
+                    <h2>{% trans "Cookies" %}</h2>
+                    <p>{% trans "A cookie refers to a file that is sent with the purpose of requesting permission to be stored on your computer, by accepting such a file is created and the cookie then serves to have information regarding web traffic, and also facilitates future visits to a recurring website. Another function that cookies have is that with them the web can recognize you individually and therefore provide you with the best personalized service on your website." %}
+                        <br><br>{% trans "Our website uses cookies to identify the pages that are visited and their frequency. This information is used only for statistical analysis and then the information is permanently deleted. You can delete cookies at any time from your computer. However, cookies help to provide a better service from websites, they do not give access to information about your computer or you, unless you choose to provide it directly to us. You can accept or deny the use of cookies, however most browsers automatically accept cookies as it serves to have a better web service. You can also change the settings on your computer to decline cookies. If they are declined you may not be able to use some of our services." %}
+                    </p>
+                    <h2>{% trans "Third Party Links" %}</h2>
+                    <p>{% trans "This website may contain links to other sites that may be of interest to you. Once you click on these links and leave our site, we no longer have control over the site to which you are redirected and therefore we are not responsible for the terms or privacy or data protection of those other third party sites. Those sites are subject to their own privacy policies and we recommend that you check with them to confirm that you agree with them." %}</p>
+                    <h2>{% trans "Control of your personal information" %}</h2>
+                    <p>{% trans "At any time you may restrict the collection or use of personal information that is provided to our website.  Whenever you are asked to fill out a form, such as a user registration form, you can check or uncheck the option to receive information by email.  In case you have checked the option to receive our newsletter or advertising you can cancel it at any time." %}
+                        <br><br>{% trans "This company will not sell, give away or distribute personal information that is collected without your consent, unless required to do so by a judge with a court order." %}
+                        <br><br>{% trans "BROOKLYN reserves the right to change the terms of this Privacy Policy at any time." %}
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+{% include "scripts.html" %}
+<script src="{% static '/js/header/script.js' %}"></script>
+<script>
+    function quitarGrid(){
+        $('.grid-gallery').css('display','none');
+    }
+    function mostrarGrid(){
+        $('.grid-gallery').css('display','grid');
+    }
+    $(document).ready(function(){
+
+        $('.bt_close ').stop().click(function(){
+            $('.top-header').css('display','block');
+            $('.fullscreen').css('display','none');
+        });
+        
+        $('.grid-gallery a.grid-gallery__item img').stop().click(function(){
+            var image = $(this).attr('src')
+            $('.fullscreen .container .row div img').attr('src',image);
+            $('.fullscreen').css('display','block');
+            $('.top-header').css('display','none');
+        });
+    });
+    $(function(){
+        $('.nav-scroll').click(function(){
+          $('.nav-scroll.active').removeClass('active');
+          $('.show').removeClass('show');
+          panelId = $(this).attr('href');
+          $(panelId).addClass('show');
+          $(this).addClass('active');
+        });
+    });
+    
+
+$(document).ready(function () {
+    var URLactual = window.location.toString();
+    if(URLactual.includes('#Home')){
+        $('.home').click();
+        $('.menu_toggler').click();
+    }else if(URLactual.includes('#Services')){
+        $('.services').click();
+        $('.menu_toggler').click();
+    }else if(URLactual.includes('#Galery')){
+        $('.galery').click();
+        $('.menu_toggler').click();
+    }else if(URLactual.includes('#Contact')){
+        $('.contact').click();
+        $('.menu_toggler').click();
+    }else if(URLactual.includes('#Redes')){
+        $('.redes').click();
+        $('.menu_toggler').click();
+    }else if(URLactual.includes('#Politica')){
+        $('.politica').click();
+        $('.menu_toggler').click();
+    }
+    setTimeout(function () {
+        $('.loading').hide().ajaxStart(function() { 
+            $(this).show(); 
+           }).ajaxStop(function() { 
+            $(this).hide(); 
+           });
+      }, 2000);
+});
+
+    document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.fixed-action-btn');
+    var instances = M.FloatingActionButton.init(elems);
+  });
+</script>
+{% endblock %}

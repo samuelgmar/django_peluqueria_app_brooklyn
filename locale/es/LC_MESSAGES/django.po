@@ -1,0 +1,396 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-05-15 12:25+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\apppeluqueria\forms.py:13
+msgid ""
+"The phone number should be entered in the format: '+999999999'. Up to 15 "
+"digits are allowed."
+msgstr ""
+"El número de teléfono debe ingresarse en el formato: '+999999999'. Se "
+"permiten hasta 15 dígitos."
+
+#: .\apppeluqueria\forms.py:17
+msgid "The two password fields do not match."
+msgstr "Los dos campos de contraseña no coinciden."
+
+#: .\apppeluqueria\templates\others\categories_services_form.html:23
+#: .\apppeluqueria\templates\others\categories_services_list.html:17
+#: .\apppeluqueria\templates\others\clients_list.html:17
+#: .\apppeluqueria\templates\others\workers_list.html:17
+#: .\apppeluqueria\templates\registration\user_form.html:16
+#: .\apppeluqueria\templates\roles\boss.html:16
+#: .\apppeluqueria\templates\roles\cliente.html:15
+#: .\apppeluqueria\templates\roles\trabajador.html:17
+msgid "Home"
+msgstr "Inicio"
+
+#: .\apppeluqueria\templates\others\categories_services_form.html:24
+#: .\apppeluqueria\templates\others\categories_services_list.html:18
+#: .\apppeluqueria\templates\others\clients_list.html:18
+#: .\apppeluqueria\templates\others\workers_list.html:18
+#: .\apppeluqueria\templates\registration\user_form.html:17
+#: .\apppeluqueria\templates\roles\boss.html:17
+#: .\apppeluqueria\templates\roles\cliente.html:16
+#: .\apppeluqueria\templates\roles\trabajador.html:18
+msgid "Account"
+msgstr "Cuenta"
+
+#: .\apppeluqueria\templates\others\categories_services_form.html:25
+#: .\apppeluqueria\templates\others\categories_services_list.html:19
+#: .\apppeluqueria\templates\others\clients_list.html:19
+#: .\apppeluqueria\templates\others\workers_list.html:19
+#: .\apppeluqueria\templates\registration\user_form.html:18
+#: .\apppeluqueria\templates\roles\boss.html:18
+#: .\apppeluqueria\templates\roles\cliente.html:17
+#: .\apppeluqueria\templates\roles\trabajador.html:19
+#, fuzzy
+#| msgid "Client <br> list"
+msgid "Clients"
+msgstr "Lista <br> de <br> clientes"
+
+#: .\apppeluqueria\templates\others\categories_services_form.html:26
+#: .\apppeluqueria\templates\others\categories_services_list.html:20
+#: .\apppeluqueria\templates\others\clients_list.html:20
+#: .\apppeluqueria\templates\others\workers_list.html:20
+#: .\apppeluqueria\templates\registration\user_form.html:19
+#: .\apppeluqueria\templates\roles\boss.html:19
+#: .\apppeluqueria\templates\roles\boss.html:128
+#: .\apppeluqueria\templates\roles\cliente.html:18
+#: .\apppeluqueria\templates\roles\trabajador.html:20
+msgid "Workers"
+msgstr "Trabajadores"
+
+#: .\apppeluqueria\templates\others\categories_services_form.html:27
+#: .\apppeluqueria\templates\others\categories_services_list.html:21
+#: .\apppeluqueria\templates\others\clients_list.html:21
+#: .\apppeluqueria\templates\others\workers_list.html:21
+#: .\apppeluqueria\templates\registration\user_form.html:20
+#: .\apppeluqueria\templates\roles\boss.html:20
+#: .\apppeluqueria\templates\roles\cliente.html:19
+#: .\apppeluqueria\templates\roles\trabajador.html:21
+msgid "Services and Categories"
+msgstr "Servicios y categorías"
+
+#: .\apppeluqueria\templates\others\categories_services_form.html:28
+#: .\apppeluqueria\templates\others\categories_services_list.html:22
+#: .\apppeluqueria\templates\others\clients_list.html:22
+#: .\apppeluqueria\templates\others\workers_list.html:22
+#: .\apppeluqueria\templates\registration\user_form.html:21
+#: .\apppeluqueria\templates\roles\boss.html:21
+#: .\apppeluqueria\templates\roles\cliente.html:20
+#: .\apppeluqueria\templates\roles\trabajador.html:22
+#, fuzzy
+#| msgid "Log in"
+msgid "Log out"
+msgstr "Iniciar sesión"
+
+#: .\apppeluqueria\templates\others\categories_services_form.html:28
+#: .\apppeluqueria\templates\others\categories_services_list.html:22
+#: .\apppeluqueria\templates\others\clients_list.html:22
+#: .\apppeluqueria\templates\others\workers_list.html:22
+#: .\apppeluqueria\templates\registration\login.html:30
+#: .\apppeluqueria\templates\registration\login.html:46
+#: .\apppeluqueria\templates\registration\login.html:96
+#: .\apppeluqueria\templates\registration\user_form.html:21
+#: .\apppeluqueria\templates\roles\boss.html:21
+#: .\apppeluqueria\templates\roles\cliente.html:20
+#: .\apppeluqueria\templates\roles\trabajador.html:22
+msgid "Log in"
+msgstr "Iniciar sesión"
+
+#: .\apppeluqueria\templates\others\categories_services_form.html:38
+#: .\apppeluqueria\templates\others\categories_services_list.html:58
+#: .\apppeluqueria\templates\others\categories_services_list.html:91
+#: .\apppeluqueria\templates\others\clients_list.html:32
+#: .\apppeluqueria\templates\others\workers_list.html:32
+msgid "Return"
+msgstr "Volver"
+
+#: .\apppeluqueria\templates\others\categories_services_form.html:92
+#: .\apppeluqueria\templates\registration\user_form.html:76
+#: .\apppeluqueria\templates\registration\user_form.html:106
+msgid "Update"
+msgstr "Actualizar"
+
+#: .\apppeluqueria\templates\others\categories_services_list.html:84
+#: .\apppeluqueria\templates\others\categories_services_list.html:131
+msgid "Add"
+msgstr "Añadir"
+
+#: .\apppeluqueria\templates\others\clients_list.html:36
+#: .\apppeluqueria\templates\others\workers_list.html:36
+#: .\apppeluqueria\templates\registration\login.html:36
+#: .\apppeluqueria\templates\registration\login.html:66
+msgid "User"
+msgstr "Usuario"
+
+#: .\apppeluqueria\templates\others\clients_list.html:41
+#: .\apppeluqueria\templates\others\workers_list.html:41
+#: .\apppeluqueria\templates\registration\login.html:71
+#: .\apppeluqueria\templates\registration\login.html:107
+msgid "Email"
+msgstr "Email"
+
+#: .\apppeluqueria\templates\others\clients_list.html:45
+#: .\apppeluqueria\templates\others\workers_list.html:45
+#: .\apppeluqueria\templates\registration\login.html:75
+msgid "Phone number"
+msgstr "Número de teléfono"
+
+#: .\apppeluqueria\templates\others\clients_list.html:49
+#: .\apppeluqueria\templates\others\workers_list.html:49
+#: .\apppeluqueria\templates\registration\login.html:41
+#: .\apppeluqueria\templates\registration\login.html:79
+msgid "Password"
+msgstr "Contraseña"
+
+#: .\apppeluqueria\templates\others\clients_list.html:53
+#: .\apppeluqueria\templates\others\workers_list.html:53
+#: .\apppeluqueria\templates\registration\login.html:83
+msgid "Password confirmation"
+msgstr "confirmación de contraseña"
+
+#: .\apppeluqueria\templates\others\clients_list.html:57
+#: .\apppeluqueria\templates\others\workers_list.html:57
+#: .\apppeluqueria\templates\registration\login.html:88
+msgid "Sign in"
+msgstr "Registrarse"
+
+#: .\apppeluqueria\templates\others\clients_list.html:74
+#, fuzzy
+#| msgid "Client <br> list"
+msgid "workers <br> list"
+msgstr "Lista <br> de <br> clientes"
+
+#: .\apppeluqueria\templates\others\clients_list.html:79
+msgid "Client <br> list"
+msgstr "Lista <br> de <br> clientes"
+
+#: .\apppeluqueria\templates\others\clients_list.html:84
+msgid "add client"
+msgstr "añadir cliente"
+
+#: .\apppeluqueria\templates\others\clients_list.html:89
+#: .\apppeluqueria\templates\others\workers_list.html:72
+msgid "Profile"
+msgstr "Perfil"
+
+#: .\apppeluqueria\templates\others\clients_list.html:90
+#: .\apppeluqueria\templates\others\workers_list.html:73
+#: .\apppeluqueria\templates\registration\user_form.html:41
+msgid "Phone"
+msgstr "Teléfono"
+
+#: .\apppeluqueria\templates\others\clients_list.html:91
+#: .\apppeluqueria\templates\others\workers_list.html:74
+#, fuzzy
+#| msgid "Email"
+msgid "E-mail"
+msgstr "Email"
+
+#: .\apppeluqueria\templates\others\clients_list.html:92
+#: .\apppeluqueria\templates\others\workers_list.html:75
+msgid "Name"
+msgstr "Nombre"
+
+#: .\apppeluqueria\templates\others\clients_list.html:93
+#: .\apppeluqueria\templates\others\workers_list.html:76
+msgid "Actions"
+msgstr "Acciones"
+
+#: .\apppeluqueria\templates\others\clients_list.html:106
+#: .\apppeluqueria\templates\others\workers_list.html:89
+#: .\apppeluqueria\templates\roles\boss.html:163
+msgid "Delete"
+msgstr "Borrar"
+
+#: .\apppeluqueria\templates\others\clients_list.html:118
+#: .\apppeluqueria\templates\others\workers_list.html:101
+msgid "first"
+msgstr "primera"
+
+#: .\apppeluqueria\templates\others\clients_list.html:119
+#: .\apppeluqueria\templates\others\workers_list.html:102
+msgid "previous"
+msgstr "última"
+
+#: .\apppeluqueria\templates\others\clients_list.html:123
+#: .\apppeluqueria\templates\others\workers_list.html:106
+msgid "Page"
+msgstr "Página"
+
+#: .\apppeluqueria\templates\others\clients_list.html:123
+#: .\apppeluqueria\templates\others\workers_list.html:106
+msgid "of"
+msgstr "de"
+
+#: .\apppeluqueria\templates\others\clients_list.html:127
+#: .\apppeluqueria\templates\others\workers_list.html:110
+msgid "next"
+msgstr "siguiente"
+
+#: .\apppeluqueria\templates\others\clients_list.html:128
+#: .\apppeluqueria\templates\others\workers_list.html:111
+msgid "last"
+msgstr "anterior"
+
+#: .\apppeluqueria\templates\others\workers_list.html:66
+#, fuzzy
+#| msgid "Client <br> list"
+msgid "workers list"
+msgstr "Lista de clientes"
+
+#: .\apppeluqueria\templates\others\workers_list.html:67
+msgid "add worker"
+msgstr "Añadir Trabajador"
+
+#: .\apppeluqueria\templates\registration\login.html:31
+msgid "Sign in to book appointments"
+msgstr "Iniciar sesión para reservar citas"
+
+#: .\apppeluqueria\templates\registration\login.html:54
+msgid "Sign up"
+msgstr "Registrarse"
+
+#: .\apppeluqueria\templates\registration\login.html:55
+#: .\apppeluqueria\templates\registration\login.html:97
+msgid "Have you forgotten your password?"
+msgstr "¿Has olvidado tu contraseña?"
+
+#: .\apppeluqueria\templates\registration\login.html:60
+msgid "New user"
+msgstr "Nuevo usuario"
+
+#: .\apppeluqueria\templates\registration\login.html:61
+msgid "Sign up to book appointments"
+msgstr "Regístrese para reservar citas"
+
+#: .\apppeluqueria\templates\registration\login.html:102
+#: .\apppeluqueria\templates\registration\login.html:112
+msgid "Recover password"
+msgstr "Recuperar contraseña"
+
+#: .\apppeluqueria\templates\registration\login.html:103
+msgid "Recover your password in one easy step"
+msgstr "Recupera tu contraseña en un solo paso"
+
+#: .\apppeluqueria\templates\registration\login.html:120
+msgid "Iniciar sesión - Registrar"
+msgstr "Iniciar sesión - Registrar"
+
+#: .\apppeluqueria\templates\registration\user_form.html:32
+msgid "update <br> your <br> profile"
+msgstr "actualiza <br> tus <br> datos"
+
+#: .\apppeluqueria\templates\roles\boss.html:28
+msgid "Book in"
+msgstr "Reservar"
+
+#: .\apppeluqueria\templates\roles\boss.html:34
+msgid "to select"
+msgstr "Seleccionar"
+
+#: .\apppeluqueria\templates\roles\boss.html:35
+#: .\apppeluqueria\templates\roles\boss.html:118
+msgid "Services"
+msgstr "Servicios"
+
+#: .\apppeluqueria\templates\roles\boss.html:36
+#: .\apppeluqueria\templates\roles\boss.html:81
+msgid "Date Time"
+msgstr "Fecha y Hora"
+
+#: .\apppeluqueria\templates\roles\boss.html:40
+msgid "Customer search"
+msgstr "Búsqueda de clientes"
+
+#: .\apppeluqueria\templates\roles\boss.html:41
+#: .\apppeluqueria\templates\roles\boss.html:138
+#, fuzzy
+#| msgid "Client <br> list"
+msgid "Client"
+msgstr "Clientes"
+
+#: .\apppeluqueria\templates\roles\boss.html:50
+msgid "choose worker"
+msgstr "Elegir trabajador"
+
+#: .\apppeluqueria\templates\roles\boss.html:62
+#: .\apppeluqueria\templates\roles\boss.html:78
+msgid "Next"
+msgstr "Siguiente"
+
+#: .\apppeluqueria\templates\roles\boss.html:65
+msgid "Select service"
+msgstr "Seleccionar servicio"
+
+#: .\apppeluqueria\templates\roles\boss.html:77
+#: .\apppeluqueria\templates\roles\boss.html:106
+#, fuzzy
+#| msgid "previous"
+msgid "Previous"
+msgstr "Anterior"
+
+#: .\apppeluqueria\templates\roles\boss.html:107
+msgid "Submit"
+msgstr "Enviar"
+
+#: .\apppeluqueria\templates\roles\boss.html:115
+msgid "Bookings"
+msgstr "Reservar"
+
+#: .\apppeluqueria\templates\roles\boss.html:120
+#: .\apppeluqueria\templates\roles\boss.html:130
+#: .\apppeluqueria\templates\roles\boss.html:151
+msgid "All"
+msgstr "Todas"
+
+#: .\apppeluqueria\templates\roles\boss.html:149
+msgid "Times"
+msgstr "Horas"
+
+#: .\apppeluqueria\views.py:57
+msgid ""
+"Please enter a correct username and password. Consider that both fields are "
+"sensitive to capitalization."
+msgstr ""
+"Por favor ingrese un nombre de usuario y contraseña correctos. Considere que "
+"ambos campos son sensibles al uso de mayúsculas."
+
+#: .\peluqueria\urls.py:30
+msgid "peluqueria/"
+msgstr "peluqueria/"
+
+#~ msgid "There are no registered customers."
+#~ msgstr "No hay clientes registrados."
+
+#, fuzzy
+#~| msgid "There are no registered customers."
+#~ msgid "There are no registered workers."
+#~ msgstr "No hay clientes registrados."
+
+#~ msgid "Logout"
+#~ msgstr "Cerrar Sesión"
+
+#~ msgid "Login"
+#~ msgstr "Iniciar Sesión"
+
+#~ msgid "Full name"
+#~ msgstr "Nombre completo"

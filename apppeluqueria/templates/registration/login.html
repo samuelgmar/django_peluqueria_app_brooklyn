@@ -1,0 +1,132 @@
+{% load static %}
+{% load i18n %}
+{% block content %}
+<div class="grid_content">
+    
+    <div class="top">
+        {% include "header.html" %}
+    </div>
+    <div class="center">
+        <link rel="stylesheet" href="{% static 'css/header/styles.css' %}">
+        <div class="menu">
+            <p><a href="">Inicio</a></p>
+            <p><a href="">Servicios</a></p>
+            <p><a href="">Studio Barber</a></p>
+            <p><a href="">Blog</a></p>
+            <p><a href="">Tienda</a></p>
+            <p><a href="">Contacta</a></p>
+            {% if user.is_authenticated %}
+            <p><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></p>
+            {% else %}
+            <p><a href="{% url 'index' %}">Login</a></p>
+            {% endif %}
+        </div>
+        <div class="bgmenu">
+        </div>
+        <div class="all-body">
+            <div class="backblur">
+                <div class="login active">
+                    <p class="login-head">{% trans "Log in" %}</p><br>
+                    <p class="login-twohead">{% trans "Sign in to book appointments" %}</p><br>
+                    <form method="post">
+                    {% csrf_token %}
+                        <div>
+                          <td><label>{% if messages %}{% for message in messages %}<p class="error-pass">{{ message }}</p>{% endfor %}{% endif %}</label></td><br>
+                          <td><label>{% trans "User" %}</label></td>
+                          <br>
+                          <td>{{ form.username }}</td>
+                        </div>
+                        <div>
+                          <td><label>{% trans "Password" %}</label></td><br>
+                          <td class="form-control">{{ form.password }}</td>
+                        </div>
+                        <div>
+                            <input class="button" type="hidden" name="iniciar_sesion" value="iniciar_sesion">
+                            <input class="button" type="submit" value="{% trans "Log in" %}"><br>
+                        </div>
+                        <div class="division">
+                            <div class="line l"></div>
+                                <span>OR</span>
+                                <div class="line r">
+                            </div>
+                        </div>
+                        <p class="regist">{% trans "Sign up" %}</p>
+                        <p class="recov">{% trans "Have you forgotten your password?" %}</p>
+                    </form>
+                </div>
+
+                <div class="register">
+                    <p class="register-head">{% trans "New user" %}</p><br>
+                    <p class="register-twohead">{% trans "Sign up to book appointments" %}</p><br>
+                    <form method="post">
+                    {% csrf_token %}
+                        <div>
+                          <td><label><p class="error-pass">{% for field in form1 %}{% if field.errors %}{% for error in field.errors %}{{ error|escape }}<br>{% endfor %}{% endif %}{% endfor %}</p></label></td><br>
+                          <td><label>{% trans "User" %}</label></td>
+                          <br>
+                          <td>{{ form1.username }}</td>
+                        </div>
+                        <div>
+                          <td><label>{% trans "Email" %}</label></td><br>
+                          <td class="form-control">{{ form1.email }}</td>
+                        </div>
+                        <div>
+                          <td><label>{% trans "Phone number" %}</label></td><br>
+                          <td class="form-control">{{ form1.phone }}</td>
+                        </div>
+                        <div>
+                          <td><label>{% trans "Password" %}</label></td><br>
+                          <td class="form-control">{{ form1.password1 }}</td>
+                        </div>
+                        <div>
+                          <td><label>{% trans "Password confirmation" %}</label></td><br>
+                          <td class="form-control">{{ form1.password2 }}</td>
+                        </div>
+                        <div>
+                            <input class="button" type="hidden" name="iniciar_sesion" value="registrarse">
+                            <input class="register_button" type="submit" value="{% trans "Sign in" %}"><br>
+                        </div>
+                        <div class="division">
+                            <div class="line l"></div>
+                                <span>OR</span>
+                                <div class="line r">
+                            </div>
+                        </div>
+                        <p class="logg">{% trans 'Log in' %}</p>
+                        <p class="recove">{% trans 'Have you forgotten your password?' %}</p>
+                    </form>
+                </div>
+
+                <div class="recover">
+                    <p class="recover-head">{% trans "Recover password" %}</p><br>
+                    <p class="recover-twohead">{% trans "Recover your password in one easy step" %}</p><br>
+                    <form method="post">
+                    {% csrf_token %}
+                        <div>
+                          <td><label>{% trans "Email" %}</label></td><br>
+                          <td class="form-control">{{ form2.email }}</td>
+                        </div>
+                        <div>
+                            <input class="button" type="hidden" name="iniciar_sesion" value="recuperar">
+                            <input class="recover_button" type="submit" value="{% trans "Recover password" %}"><br>
+                        </div>
+                        <div class="division">
+                            <div class="line l"></div>
+                                <span>OR</span>
+                                <div class="line r">
+                            </div>
+                        </div>
+                        <p class="logge">{% trans "Iniciar sesión - Registrar" %}</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="foot">
+        {% include "footer.html" %}
+    </div>
+</div>
+{% endblock %}
+{% include "scripts.html" %}
+<script src="{% static '/js/header/script.js' %}"></script>

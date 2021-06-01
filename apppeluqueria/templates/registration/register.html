@@ -1,0 +1,51 @@
+{% include "header.html" %}
+
+{% load static %}
+    <!-- TEXTO PRINCIPAL -->
+    <div class="all-body">
+        <div class="backblur">
+            <div class="login">
+                <p class="login-head">Nuevo usuario</p><br>
+                <p class="login-twohead">Registrate para reservar citas</p><br>
+                {% block content %}
+                    <form method="post">
+                      {% csrf_token %}
+                        {% if form.errors %}
+                            <p class="error-pass">Tu nombre de usuario y contraseña no coinciden. Inténtalo de nuevo.</p>
+                        {% endif %}
+                        <div>
+                          <td><label>Usuario</label></td>
+                          <br>
+                          <td>{{ form.username }}</td>
+                        </div>
+                        <div>
+                          <td><label>Email</label></td><br>
+                          <td class="form-control">{{ form.email }}</td>
+                        </div>
+                        <div>
+                          <td><label>Número de móvil</label></td><br>
+                          <td class="form-control">{{ form.phone }}</td>
+                        </div>
+                        <div>
+                          <td><label>Contraseña</label></td><br>
+                          <td class="form-control">{{ form.password1 }}</td>
+                        </div>
+                        <div>
+                          <td><label>Confirmación de contraseña</label></td><br>
+                          <td class="form-control">{{ form.password2 }}</td>
+                        </div>
+                        <div>
+                             <input class="register_button" type="submit" value="Registrarse"><br>
+                        </div>
+                        <hr>
+                        <a href=""><p>¿Ha olvidado su contraseña?</p></a>
+                    </form>
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+    <!-- JQUERY OCULTAR MENU -->
+    
+{% include "footer.html" %}
+<!-- MENU -->
+<script src="{% static 'js/header/script.js' %}"></script>

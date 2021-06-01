@@ -1,0 +1,5571 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css?family=K2D");
+@font-face {
+  font-family: ailerons;
+  src: url(../text_fonts/ailerons.otf);
+}
+
+@font-face {
+  font-family: CovesBold;
+  src: url(../text_fonts/CovesBold.otf);
+}
+
+@font-face {
+  font-family: CovesLight;
+  src: url(../text_fonts/CovesLight.otf);
+}
+
+@font-face {
+  font-family: fuentean;
+  src: url(../text_fonts/PlaylistCaps.otf.otf);
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.bandera {
+  width: 30;
+}
+
+@media only screen and (max-width: 900px) {
+  btn-floating.btn-large {
+    width: 46px;
+    height: 46px;
+  }
+  btn-floating.btn-large i.large {
+    line-height: 46px;
+  }
+  bandera {
+    width: 25;
+  }
+  fixed-action-btn {
+    right: 10px;
+  }
+}
+
+/**
+* ! ------------------------ Template preloader ------------------------
+*/
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#preloader img {
+  display: block;
+  width: 20rem;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  -webkit-transition: all .5s ease-out;
+  -moz-transition: all .5s ease-out;
+  -o-transition: all .5s ease-out;
+  transition: all .5s ease-out;
+  margin: 0 auto;
+}
+
+#loader {
+  display: block;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #9370DB;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+#loader:before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #BA55D3;
+  -webkit-animation: spin 3s linear infinite;
+  animation: spin 3s linear infinite;
+}
+
+#loader:after {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #FF00FF;
+  -webkit-animation: spin 1.5s linear infinite;
+  animation: spin 1.5s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+/**
+* ! ------------------------ Template Home Header ------------------------
+*/
+.body-home {
+  overflow: hidden;
+}
+
+.body-home .top-header {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  z-index: 991;
+}
+
+.body-home .top-header .principal-header {
+  position: fixed;
+  -webkit-transition: all .5s ease-out;
+  -moz-transition: all .5s ease-out;
+  -o-transition: all .5s ease-out;
+  transition: all .5s ease-out;
+  top: 0;
+  background: transparent;
+  -webkit-box-shadow: inset 0 0 0 3000px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 0 3000px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.body-home .contain-menu .menu {
+  position: fixed;
+  left: -200vw;
+  z-index: 990;
+  color: #005c9c;
+  background: rgba(250, 250, 250, 0.7);
+  -webkit-clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+  width: 30vw;
+  height: 100vh;
+  padding: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: 300ms left cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.body-home .contain-menu .menu p {
+  font-family: 'Raleway';
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.body-home .contain-menu .menu p a {
+  color: black;
+}
+
+@media only screen and (max-width: 1000px) {
+  .body-home .contain-menu .menu {
+    position: -webkit-fixed;
+    position: fixed;
+    height: 111vh;
+    width: 100vw;
+    left: -200vw;
+    text-align: center;
+    -webkit-clip-path: none;
+    clip-path: none;
+    -webkit-transition: all .5s ease-out;
+    -moz-transition: all .5s ease-out;
+    -o-transition: all .5s ease-out;
+    transition: all .5s ease-out;
+    padding: 0;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .body-home .contain-menu .menu div {
+    overflow-y: auto;
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+    max-height: 100vh;
+  }
+}
+
+.body-home .contain-menu .menu.active {
+  left: 0;
+}
+
+.body-home .contain-menu .bgmenu {
+  left: -1000vw;
+  height: 100vh;
+  width: 100%;
+  background: inherit;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  -webkit-box-shadow: inset 0 0 0 3000px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 0 0 3000px rgba(0, 0, 0, 0.2);
+  z-index: 989;
+  display: flex;
+  position: fixed;
+  transition: 300ms left cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+@media only screen and (max-height: 550px) {
+  .body-home .contain-menu .bgmenu {
+    position: fixed;
+    height: 111vh;
+    webkit-transition: all .5s ease-out;
+    -moz-transition: all .5s ease-out;
+    -o-transition: all .5s ease-out;
+    transition: all .5s ease-out;
+  }
+}
+
+.body-home .contain-menu .bgmenu.active {
+  left: 0;
+}
+
+.body-home .sections {
+  z-index: 99;
+  height: 100vh;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+}
+
+.body-home .sections .content-section {
+  position: absolute;
+  width: 100%;
+  margin: auto;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  transition: all 0.5s ease;
+}
+
+.body-home .sections .content-section.show {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  position: absolute;
+  z-index: 10;
+}
+
+.body-home .sections #Home {
+  display: none;
+  width: 100%;
+}
+
+.body-home .sections #Home .logged {
+  margin-top: 5%;
+  text-align: center;
+  color: white;
+}
+
+.body-home .sections #Home .all-body {
+  padding-top: 8rem;
+  top: 0;
+  width: 100%;
+  height: auto;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: static;
+  -webkit-transition: all .5s ease-out;
+  -moz-transition: all .5s ease-out;
+  -o-transition: all .5s ease-out;
+  transition: all .5s ease-out;
+}
+
+.body-home .sections #Home .all-body .backblur {
+  max-height: 88%;
+  overflow-y: auto;
+  width: 40%;
+  display: block;
+  background: inherit;
+  backdrop-filter: blur(10px);
+  min-height: 20px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(103, 103, 103, 0.15);
+  box-shadow: inset 0 0 0 3000px rgba(121, 121, 121, 0.4);
+  -webkit-backdrop-filter: blur(10px);
+  -moz-backdrop-filter: blur(10px);
+  -o-backdrop-filter: blur(10px);
+  -webkit-box-shadow: inset 0 0 0 3000px rgba(121, 121, 121, 0.4);
+  border-radius: 4px;
+  padding: 16px;
+  -webkit-transition: all .5s ease-out;
+  -moz-transition: all .5s ease-out;
+  -o-transition: all .5s ease-out;
+  transition: all .5s ease-out;
+}
+
+.body-home .sections #Home .all-body .backblur .login {
+  display: none;
+}
+
+.body-home .sections #Home .all-body .backblur .login .login-head {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  margin-top: 20px;
+  color: white;
+  font-size: 40px;
+  text-align: center;
+  line-height: 1;
+  letter-spacing: -1px;
+  margin: 0 0 10px;
+}
+
+.body-home .sections #Home .all-body .backblur .login .login-twohead {
+  font-family: 'Raleway', sans-serif;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.body-home .sections #Home .all-body .backblur .login form {
+  text-align: left;
+  font-family: 'Raleway', sans-serif;
+  color: white;
+  text-decoration: none;
+}
+
+.body-home .sections #Home .all-body .backblur .login form .division {
+  float: none;
+  margin: 18px auto 18px;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+.body-home .sections #Home .all-body .backblur .login form .division .line {
+  border-top: 1px solid #DFDFDF;
+  position: absolute;
+  top: 10px;
+  width: 34%;
+}
+
+.body-home .sections #Home .all-body .backblur .login form .division .line .l {
+  left: 0;
+}
+
+.body-home .sections #Home .all-body .backblur .login form .division span {
+  color: #DFDFDF;
+  font-size: 17px;
+}
+
+.body-home .sections #Home .all-body .backblur .login form .division .line.r {
+  right: 0;
+}
+
+.body-home .sections #Home .all-body .backblur .login form a {
+  text-decoration: none;
+  color: white;
+}
+
+.body-home .sections #Home .all-body .backblur .login form a:hover {
+  text-decoration: underline;
+  color: #bdbdbd;
+}
+
+.body-home .sections #Home .all-body .backblur .login form div label {
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.body-home .sections #Home .all-body .backblur .login form div #id_username,
+.body-home .sections #Home .all-body .backblur .login form div #id_password,
+.body-home .sections #Home .all-body .backblur .login form div #id_password1,
+.body-home .sections #Home .all-body .backblur .login form div #id_password2,
+.body-home .sections #Home .all-body .backblur .login form div #id_email,
+.body-home .sections #Home .all-body .backblur .login form div #id_phone,
+.body-home .sections #Home .all-body .backblur .login form div #id_new_password1,
+.body-home .sections #Home .all-body .backblur .login form div #id_new_password2 {
+  width: 100%;
+  height: 30px;
+  opacity: 0.4;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  color: black;
+  margin-bottom: 10px;
+}
+
+.body-home .sections #Home .all-body .backblur .login form input#recordar {
+  width: 5%;
+  height: 18px;
+  opacity: 0.4;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  color: black;
+  margin-bottom: 10px;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.body-home .sections #Home .all-body .backblur .login form .recordar {
+  font-size: 12px;
+}
+
+.body-home .sections #Home .all-body .backblur .login form input.submit {
+  width: 48%;
+  background-color: deepskyblue;
+  color: white;
+  background-color: light;
+  height: auto;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+}
+
+.body-home .sections #Home .all-body .backblur .login form input.button {
+  /*O usando los padding*/
+  width: 100%;
+  background-color: deepskyblue;
+  color: white;
+  background-color: light;
+  height: auto;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+}
+
+.body-home .sections #Home .all-body .backblur .login form input.register_button {
+  width: 100%;
+  background-color: deepskyblue;
+  color: white;
+  background-color: light;
+  height: auto;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+}
+
+.body-home .sections #Home .all-body .backblur .login form p {
+  color: white;
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.body-home .sections #Home .all-body .backblur .login form p.error-pass {
+  -backdrop-filter: blur(10px);
+  box-shadow: inset 0 0 0 3000px rgba(255, 0, 0, 0.308);
+  -webkit-backdrop-filter: blur(10px);
+  -webkit-box-shadow: inset 0 0 0 3000px rgba(255, 0, 0, 0.308);
+  border-radius: 4px;
+}
+
+.body-home .sections #Home .all-body .backblur .login form p.regist:hover, .body-home .sections #Home .all-body .backblur .login form p.recov:hover {
+  text-decoration: underline;
+  color: #b6b5b5;
+}
+
+.body-home .sections #Home .all-body .backblur .login.active {
+  display: block;
+}
+
+.body-home .sections #Home .all-body .backblur .register {
+  display: none;
+}
+
+.body-home .sections #Home .all-body .backblur .register .register-head {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  margin-top: 20px;
+  color: white;
+  font-size: 40px;
+  text-align: center;
+  line-height: 1;
+  letter-spacing: -1px;
+  margin: 0 0 10px;
+}
+
+.body-home .sections #Home .all-body .backblur .register .register-twohead {
+  font-family: 'Raleway', sans-serif;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.body-home .sections #Home .all-body .backblur .register form {
+  text-align: left;
+  font-family: 'Raleway', sans-serif;
+  color: white;
+  text-decoration: none;
+}
+
+.body-home .sections #Home .all-body .backblur .register form .division {
+  float: none;
+  margin: 18px auto 18px;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+.body-home .sections #Home .all-body .backblur .register form .division .line {
+  border-top: 1px solid #DFDFDF;
+  position: absolute;
+  top: 10px;
+  width: 34%;
+}
+
+.body-home .sections #Home .all-body .backblur .register form .division .line.l {
+  left: 0;
+}
+
+.body-home .sections #Home .all-body .backblur .register form .division .line.r {
+  right: 0;
+}
+
+.body-home .sections #Home .all-body .backblur .register form .division span {
+  color: #DFDFDF;
+  font-size: 17px;
+}
+
+.body-home .sections #Home .all-body .backblur .register form a {
+  text-decoration: none;
+  color: white;
+}
+
+.body-home .sections #Home .all-body .backblur .register form a:hover {
+  text-decoration: underline;
+  color: #bdbdbd;
+}
+
+.body-home .sections #Home .all-body .backblur .register form div label {
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.body-home .sections #Home .all-body .backblur .register form div #id_username,
+.body-home .sections #Home .all-body .backblur .register form div #id_password,
+.body-home .sections #Home .all-body .backblur .register form div #id_password1,
+.body-home .sections #Home .all-body .backblur .register form div #id_password2,
+.body-home .sections #Home .all-body .backblur .register form div #id_email,
+.body-home .sections #Home .all-body .backblur .register form div #id_phone {
+  width: 100%;
+  height: 30px;
+  opacity: 0.4;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  color: black;
+  margin-bottom: 10px;
+  font-size: large;
+}
+
+.body-home .sections #Home .all-body .backblur .register form input#recordar {
+  width: 5%;
+  height: 18px;
+  opacity: 0.4;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  color: black;
+  margin-bottom: 10px;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.body-home .sections #Home .all-body .backblur .register form .recordar {
+  font-size: 12px;
+}
+
+.body-home .sections #Home .all-body .backblur .register form input.submit {
+  width: 48%;
+  background-color: deepskyblue;
+  color: white;
+  background-color: light;
+  height: auto;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+}
+
+.body-home .sections #Home .all-body .backblur .register form input.button {
+  /*O usando los padding*/
+  width: 100%;
+  background-color: deepskyblue;
+  color: white;
+  background-color: light;
+  height: auto;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+}
+
+.body-home .sections #Home .all-body .backblur .register form input.register_button {
+  width: 100%;
+  background-color: deepskyblue;
+  color: white;
+  background-color: light;
+  height: auto;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+}
+
+.body-home .sections #Home .all-body .backblur .register form p {
+  color: white;
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.body-home .sections #Home .all-body .backblur .register form p.error-pass {
+  -backdrop-filter: blur(10px);
+  box-shadow: inset 0 0 0 3000px rgba(255, 0, 0, 0.308);
+  -webkit-backdrop-filter: blur(10px);
+  -webkit-box-shadow: inset 0 0 0 3000px rgba(255, 0, 0, 0.308);
+  border-radius: 4px;
+}
+
+.body-home .sections #Home .all-body .backblur .register form p.logg:hover, .body-home .sections #Home .all-body .backblur .register form p.recove:hover {
+  text-decoration: underline;
+  color: #b6b5b5;
+}
+
+.body-home .sections #Home .all-body .backblur .register.active {
+  display: block;
+}
+
+.body-home .sections #Home .all-body .backblur .recover {
+  display: none;
+}
+
+.body-home .sections #Home .all-body .backblur .recover .recover-head {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  margin-top: 20px;
+  color: white;
+  font-size: 40px;
+  text-align: center;
+  line-height: 1;
+  letter-spacing: -1px;
+  margin: 0 0 10px;
+}
+
+.body-home .sections #Home .all-body .backblur .recover .recover-twohead {
+  font-family: 'Raleway', sans-serif;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.body-home .sections #Home .all-body .backblur .recover form {
+  text-align: left;
+  font-family: 'Raleway', sans-serif;
+  color: white;
+  text-decoration: none;
+}
+
+.body-home .sections #Home .all-body .backblur .recover form .error-pass {
+  color: white;
+  background-color: red;
+  border: solid 0px;
+  border-radius: 5px;
+}
+
+.body-home .sections #Home .all-body .backblur .recover form .division {
+  float: none;
+  margin: 18px auto 18px;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+.body-home .sections #Home .all-body .backblur .recover form .division .line {
+  border-top: 1px solid #DFDFDF;
+  position: absolute;
+  top: 10px;
+  width: 34%;
+}
+
+.body-home .sections #Home .all-body .backblur .recover form .division .line.l {
+  left: 0;
+}
+
+.body-home .sections #Home .all-body .backblur .recover form .division .line.r {
+  right: 0;
+}
+
+.body-home .sections #Home .all-body .backblur .recover form .division span {
+  color: #DFDFDF;
+  font-size: 17px;
+}
+
+.body-home .sections #Home .all-body .backblur .recover form a {
+  text-decoration: none;
+  color: white;
+}
+
+.body-home .sections #Home .all-body .backblur .recover form a:hover {
+  text-decoration: underline;
+  color: #bdbdbd;
+}
+
+.body-home .sections #Home .all-body .backblur .recover form div label {
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.body-home .sections #Home .all-body .backblur .recover form div #id_username,
+.body-home .sections #Home .all-body .backblur .recover form div #id_password,
+.body-home .sections #Home .all-body .backblur .recover form div #id_password1,
+.body-home .sections #Home .all-body .backblur .recover form div #id_password2,
+.body-home .sections #Home .all-body .backblur .recover form div #id_email,
+.body-home .sections #Home .all-body .backblur .recover form div #id_phone,
+.body-home .sections #Home .all-body .backblur .recover form div #new_password1,
+.body-home .sections #Home .all-body .backblur .recover form div #new_password2 {
+  width: 100%;
+  height: 30px;
+  opacity: 0.4;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  color: black;
+  margin-bottom: 10px;
+  font-size: large;
+}
+
+.body-home .sections #Home .all-body .backblur .recover form input#recordar {
+  width: 5%;
+  height: 18px;
+  opacity: 0.4;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  color: black;
+  margin-bottom: 10px;
+  align-items: center;
+  vertical-align: middle;
+  font-size: large;
+}
+
+.body-home .sections #Home .all-body .backblur .recover form .recordar {
+  font-size: 12px;
+}
+
+.body-home .sections #Home .all-body .backblur .recover form input.submit {
+  width: 48%;
+  background-color: deepskyblue;
+  color: white;
+  background-color: light;
+  height: auto;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+}
+
+.body-home .sections #Home .all-body .backblur .recover form input.button {
+  /*O usando los padding*/
+  width: 100%;
+  background-color: deepskyblue;
+  color: white;
+  background-color: light;
+  height: auto;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+}
+
+.body-home .sections #Home .all-body .backblur .recover form input.recover_button {
+  width: 100%;
+  background-color: deepskyblue;
+  color: white;
+  background-color: light;
+  height: auto;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+}
+
+.body-home .sections #Home .all-body .backblur .recover form p {
+  color: white;
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.body-home .sections #Home .all-body .backblur .recover form p.logge:hover {
+  text-decoration: underline;
+  color: #b6b5b5;
+}
+
+.body-home .sections #Home .all-body .backblur .recover.active {
+  display: block;
+}
+
+@media screen and (max-width: 1000px) {
+  .body-home .sections #Home .all-body .backblur {
+    width: 95%;
+    -webkit-transition: all .5s ease-out;
+    -moz-transition: all .5s ease-out;
+    -o-transition: all .5s ease-out;
+    transition: all .5s ease-out;
+  }
+}
+
+.body-home .sections #Home .logg a {
+  color: greenyellow;
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.body-home .sections #Home .logg a:hover {
+  text-decoration: underline;
+  color: #73fac6;
+}
+
+.body-home .sections #Home .all-body .backblur .login form div #id_username,
+.body-home .sections #Home .all-body .backblur .login form div #id_password {
+  width: 100%;
+  height: 30px;
+  opacity: 0.4;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  color: black;
+  margin-bottom: 10px;
+  font-size: large;
+}
+
+.body-home .sections #Home .principal-contain {
+  font-family: 'Raleway', sans-serif;
+  margin: 10% auto;
+  width: 70%;
+  height: auto;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.body-home .sections #Home .principal-contain h1 {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+  line-height: 1.2;
+  font-size: 2em;
+  margin: .67em 0;
+  color: black;
+  text-align: center;
+}
+
+.body-home .sections #Home .principal-contain div {
+  width: 100%;
+}
+
+.body-home .sections #Home .principal-contain div #form-id {
+  text-align: center;
+}
+
+.body-home .sections #Home .principal-contain div #form-id input, .body-home .sections #Home .principal-contain div #form-id textarea {
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: montserrat;
+  color: #2C3E50;
+  font-size: 13px;
+}
+
+.body-home .sections #Home .principal-contain div #form-id .progress {
+  width: 50%;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  counter-reset: step;
+  color: black;
+  height: auto;
+  background-color: transparent;
+  overflow: hidden;
+  font-size: .75rem;
+  display: flex;
+}
+
+.body-home .sections #Home .principal-contain div #form-id .progress li {
+  list-style-type: none;
+  color: white;
+  text-transform: uppercase;
+  font-size: 9px;
+  width: 33.33%;
+  float: left;
+  color: black;
+}
+
+.body-home .sections #Home .principal-contain div #form-id .progress li.active:before, .body-home .sections #Home .principal-contain div #form-id .progress li.active:after {
+  background: #27AE60;
+  color: white;
+}
+
+.body-home .sections #Home .principal-contain div #form-id .progress li:before {
+  content: counter(step);
+  counter-increment: step;
+  width: 20px;
+  line-height: 20px;
+  display: block;
+  font-size: 10px;
+  color: #333;
+  background: rgba(186, 185, 185, 0.768);
+  border-radius: 3px;
+  margin: 0 auto 5px auto;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset {
+  background: white;
+  border: 0 none;
+  border-radius: 3px;
+  padding: 20px 30px;
+  box-sizing: border-box;
+  width: 80%;
+  margin: 0 10%;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset .fs-title {
+  font-size: 15px;
+  text-transform: uppercase;
+  color: #2C3E50;
+  margin-bottom: 10px;
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset input[type="submit"] {
+  display: none;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 18%;
+  overflow-y: auto;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers .form__answer {
+  flex: 0 0 240px;
+  width: auto;
+  margin: 0 1%;
+  height: auto;
+  vertical-align: top;
+  font-size: 22px;
+  text-align: center;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers .form__answer input[type="radio"] {
+  opacity: 0;
+  width: 0;
+  background-color: initial;
+  cursor: default;
+  appearance: auto;
+  box-sizing: border-box;
+  margin: 3px 3px 0px 5px;
+  padding: initial;
+  border: initial;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers .form__answer [type=checkbox], .body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers .form__answer [type=radio] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers .form__answer button, .body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers .form__answer input, .body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers .form__answer optgroup, .body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers .form__answer select, .body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers .form__answer textarea {
+  font-family: sans-serif;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers .form__answer button, .body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers .form__answer hr, .body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers .form__answer input {
+  overflow: visible;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers .form__answer input {
+  -webkit-writing-mode: horizontal-tb !important;
+  text-rendering: auto;
+  color: -internal-light-dark(black, white);
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  appearance: auto;
+  background-color: -internal-light-dark(white, #3b3b3b);
+  -webkit-rtl-ordering: logical;
+  cursor: text;
+  margin: 0em;
+  font: 400 13.3333px Arial;
+  padding: 1px 2px;
+  border-width: 2px;
+  border-style: inset;
+  border-color: -internal-light-dark(#767676, #858585);
+  border-image: initial;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers .form__answer input[type=radio]:checked ~ label {
+  opacity: 1;
+  border: 2px solid red;
+  border-radius: 10px;
+  color: black;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers .form__answer input[type=radio]:checked ~ label img {
+  width: 50%;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers .form__answer label {
+  border: 2px solid rgba(61, 61, 61, 0.309);
+  box-sizing: border-box;
+  display: block;
+  height: auto;
+  width: 100%;
+  padding: 10px 10px 10px 10px;
+  cursor: pointer;
+  opacity: 1;
+  transition: all 0.5s ease-in-out;
+  color: rgba(0, 0, 0, 0.192);
+  cursor: default;
+  filter: alpha(opacity=50);
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers .form__answer label img {
+  transition: all 0.5s ease-in-out;
+  width: 30%;
+  border-radius: 50%;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers .form__answer .next.action-button {
+  display: none;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers .form__answer .action-button {
+  width: 100px;
+  background: #27AE60;
+  font-weight: bold;
+  color: white;
+  border: 0 none;
+  border-radius: 1px;
+  cursor: pointer;
+  padding: 10px 5px;
+  margin: 10px 5px;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 8%;
+  overflow-y: auto;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers2 .form__answer_date {
+  flex: 0 0 10%;
+  width: auto;
+  margin: 0 1%;
+  height: auto;
+  vertical-align: top;
+  font-size: 22px;
+  text-align: center;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers2 .form__answer_date input[type=radio] {
+  opacity: 0;
+  width: 0;
+  background-color: initial;
+  cursor: default;
+  appearance: auto;
+  box-sizing: border-box;
+  margin: 3px 3px 0px 5px;
+  padding: initial;
+  border: initial;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers2 .form__answer_date [type=checkbox], .body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers2 .form__answer_date [type=radio] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers2 .form__answer_date button, .body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers2 .form__answer_date input, .body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers2 .form__answer_date optgroup, .body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers2 .form__answer_date select, .body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers2 .form__answer_date textarea {
+  font-family: sans-serif;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers2 .form__answer_date button, .body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers2 .form__answer_date hr, .body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers2 .form__answer_date input {
+  overflow: visible;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers2 .form__answer_date input {
+  -webkit-writing-mode: horizontal-tb !important;
+  text-rendering: auto;
+  color: -internal-light-dark(black, white);
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  appearance: auto;
+  background-color: -internal-light-dark(white, #3b3b3b);
+  -webkit-rtl-ordering: logical;
+  cursor: text;
+  margin: 0em;
+  font: 400 13.3333px Arial;
+  padding: 1px 2px;
+  border-width: 2px;
+  border-style: inset;
+  border-color: -internal-light-dark(#767676, #858585);
+  border-image: initial;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers2 .form__answer_date input[type=radio]:checked ~ label {
+  opacity: 1;
+  border: 1px solid #ff0000;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers2 .form__answer_date label {
+  border: 1px solid rgba(61, 61, 61, 0.309);
+  box-sizing: border-box;
+  border-radius: 35px;
+  display: block;
+  height: auto;
+  width: 100%;
+  padding: 10px 10px 10px 10px;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: all 0.5s ease-in-out;
+  color: black;
+  cursor: default;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers2 .form__answer_date label img {
+  border-radius: 50%;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers2 .form__answer {
+  flex: 0 0 240px;
+  width: 23%;
+  margin: 0 1%;
+  height: auto;
+  vertical-align: top;
+  font-size: 22px;
+  text-align: center;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers2 .form__answer input[type=radio] {
+  opacity: 0;
+  width: 0;
+  background-color: initial;
+  cursor: default;
+  appearance: auto;
+  box-sizing: border-box;
+  margin: 3px 3px 0px 5px;
+  padding: initial;
+  border: initial;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers2 .form__answer [type=checkbox], .body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers2 .form__answer [type=radio] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers2 .form__answer button, .body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers2 .form__answer input, .body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers2 .form__answer optgroup, .body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers2 .form__answer select, .body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers2 .form__answer textarea {
+  font-family: sans-serif;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers2 .form__answer button, .body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers2 .form__answer hr, .body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers2 .form__answer input {
+  overflow: visible;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers2 .form__answer input {
+  -webkit-writing-mode: horizontal-tb !important;
+  text-rendering: auto;
+  color: -internal-light-dark(black, white);
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  appearance: auto;
+  background-color: -internal-light-dark(white, #3b3b3b);
+  -webkit-rtl-ordering: logical;
+  cursor: text;
+  margin: 0em;
+  font: 400 13.3333px Arial;
+  padding: 1px 2px;
+  border-width: 2px;
+  border-style: inset;
+  border-color: -internal-light-dark(#767676, #858585);
+  border-image: initial;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers2 .form__answer input[type=radio]:checked ~ label {
+  opacity: 1;
+  border: 2px solid red;
+  border-radius: 10px;
+  color: black;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers2 .form__answer input[type=radio]:checked ~ label img {
+  width: 50%;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers2 .form__answer label {
+  border: 2px solid rgba(61, 61, 61, 0.309);
+  box-sizing: border-box;
+  display: block;
+  height: auto;
+  width: 100%;
+  padding: 10px 10px 10px 10px;
+  cursor: pointer;
+  opacity: 1;
+  transition: all 0.5s ease-in-out;
+  color: rgba(0, 0, 0, 0.192);
+  cursor: default;
+  filter: alpha(opacity=50);
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers2 .form__answer label img {
+  transition: all 0.5s ease-in-out;
+  width: 30%;
+  border-radius: 50%;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset #horas-container {
+  display: none;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset #horas-container .contain-workers2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 8%;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset #horas-container .contain-workers2 .form__answer_date {
+  flex: 0 0 10%;
+  width: auto;
+  margin: 0 1%;
+  height: auto;
+  vertical-align: top;
+  font-size: 22px;
+  text-align: center;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset #horas-container .contain-workers2 .form__answer_date label {
+  border: 1px solid rgba(61, 61, 61, 0.309);
+  box-sizing: border-box;
+  border-radius: 35px;
+  display: block;
+  height: auto;
+  width: 100%;
+  padding: 10px 10px 10px 10px;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: all 0.5s ease-in-out;
+  color: black;
+  cursor: default;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset #horas-container .contain-workers2 .form__answer_date input[type=radio]:checked ~ label {
+  opacity: 1;
+  border: 1px solid #ff0000;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset .action-button {
+  width: 100px;
+  background: #27AE60;
+  font-weight: bold;
+  color: white;
+  border: 0 none;
+  border-radius: 1px;
+  cursor: pointer;
+  padding: 10px 5px;
+  margin: 10px 5px;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset .next.action-button {
+  display: none;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset .action-button:hover, .body-home .sections #Home .principal-contain div #form-id fieldset .action-button:focus {
+  box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+}
+
+.body-home .sections #Home .principal-contain div #form-id fieldset:not(:first-of-type) {
+  display: none;
+}
+
+@media only screen and (max-width: 950px) {
+  .body-home .sections #Home .principal-contain {
+    width: 90%;
+    margin: 20vw auto;
+  }
+  .body-home .sections #Home .principal-contain div #form-id .progress {
+    width: 90%;
+    margin-bottom: 15px;
+  }
+  .body-home .sections #Home .principal-contain div #form-id fieldset {
+    padding: 0;
+    margin: 15px 10%;
+  }
+  .body-home .sections #Home .principal-contain div #form-id fieldset .fs-title {
+    margin: 0;
+    width: 95%;
+  }
+  .body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers {
+    border: solid rgba(156, 156, 156, 0.349) 1px;
+  }
+  .body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers .form__answer label {
+    width: 50vw;
+    margin: 0 auto;
+    font-size: 16px;
+  }
+  .body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers2 {
+    border: solid rgba(156, 156, 156, 0.349) 1px;
+  }
+  .body-home .sections #Home .principal-contain div #form-id fieldset .contain-workers2 .form__answer label {
+    width: 50vw;
+    margin: 0 auto;
+    font-size: 16px;
+  }
+  .body-home .sections #Home .principal-contain div #form-id fieldset .action-button {
+    margin-bottom: 2px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .body-home .sections #Home .principal-contain {
+    width: 90%;
+    margin: 30vw auto;
+  }
+}
+
+.body-home .sections #Home .all-body-login {
+  background: -prefix-linear-gradient(button, rgba(249, 242, 149, 0.95), rgba(255, 127, 159, 0.95));
+  background: linear-gradient(to top, rgba(249, 242, 149, 0.95), rgba(255, 127, 159, 0.95));
+}
+
+.body-home .sections #Home .all-body-login .contai {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.body-home .sections #Home .all-body-login .contai h2 {
+  text-transform: uppercase;
+}
+
+.body-home .sections #Home .all-body-login .contai hr {
+  margin-bottom: 3px;
+}
+
+.body-home .sections #Home .all-body-login .contai h3 {
+  font-size: 200%;
+  margin-top: 0;
+}
+
+.body-home .sections #Home .all-body-login .contai h3 p {
+  margin-top: 10px;
+}
+
+.body-home .sections #Home .all-body-login .contai button {
+  width: 80%;
+  background-color: deepskyblue;
+  color: white;
+  background-color: light;
+  height: auto;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+  text-transform: uppercase;
+}
+
+.body-home .sections #Galery {
+  display: none;
+  width: 100%;
+  background: -prefix-linear-gradient(button, #f9f295, #ff7f9f);
+  background: linear-gradient(to top, #f9f295, #ff7f9f);
+}
+
+.body-home .sections #Galery .fullscreen {
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999999;
+  display: none;
+}
+
+.body-home .sections #Galery .fullscreen .container {
+  padding: 0;
+  position: absolute;
+  width: auto;
+  top: auto;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.body-home .sections #Galery .fullscreen .container .row, .body-home .sections #Galery .fullscreen .container .row > div {
+  border: none;
+  margin: 0 0;
+  padding: 0 0;
+}
+
+.body-home .sections #Galery .fullscreen .row > div img {
+  width: 100%;
+}
+
+.body-home .sections #Galery .grid-gallery {
+  display: grid;
+  grid-auto-rows: 200px;
+  grid-gap: .5rem;
+  grid-auto-flow: row dense;
+  max-height: 100%;
+  overflow: auto;
+}
+
+@media all and (min-width: 320px) {
+  .body-home .sections #Galery .grid-gallery {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media all and (min-width: 768px) {
+  .body-home .sections #Galery .grid-gallery {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+  }
+}
+
+@media all and (min-width: 1024px) {
+  .body-home .sections #Galery .grid-gallery {
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 1rem;
+  }
+}
+
+.body-home .sections #Galery .grid-gallery__item:nth-child(11n+1) {
+  grid-column: span 1;
+}
+
+.body-home .sections #Galery .grid-gallery__item:nth-child(11n+4) {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+
+.body-home .sections #Galery .grid-gallery__item:nth-child(11n+6) {
+  grid-column: span 3;
+  grid-row: span 1;
+}
+
+.body-home .sections #Galery .grid-gallery__item:nth-child(11n+7) {
+  grid-column: span 1;
+  grid-row: span 2;
+}
+
+.body-home .sections #Galery .grid-gallery__item:nth-child(11n+8) {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.body-home .sections #Galery .grid-gallery__item:nth-child(11n+9) {
+  grid-row: span 3;
+}
+
+.body-home .sections #Galery .grid-gallery__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.body-home .sections #Contact {
+  display: none;
+  width: 100%;
+  background-color: white;
+  height: 100vh;
+}
+
+.body-home .sections #Contact .map {
+  height: 50vh;
+}
+
+.body-home .sections #Contact i {
+  font-size: 8rem;
+}
+
+.body-home .sections #Contact p, .body-home .sections #Contact a {
+  font-family: 'Raleway', sans-serif;
+  font-size: 2rem;
+  font-weight: 400;
+  color: #f1f1f1;
+}
+
+.body-home .sections #Contact .map {
+  height: 100%;
+  position: absolute;
+  z-index: 9;
+  height: 100%;
+  width: 100%;
+}
+
+.body-home .sections #Contact .container-fluid {
+  overflow-y: auto;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  z-index: 9;
+  background: -prefix-linear-gradient(button, rgba(249, 242, 149, 0.5), rgba(255, 127, 159, 0.5));
+  background: linear-gradient(to top, rgba(249, 242, 149, 0.5), rgba(255, 127, 159, 0.5));
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.body-home .sections #Contact .container-fluid .row {
+  width: 100%;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.body-home .sections #Contact .container-fluid .row {
+  align-items: center !important;
+  margin-top: 10vh;
+}
+
+.body-home .sections #Contact .container-fluid .row a {
+  color: black;
+}
+
+.body-home .sections #Contact .container-fluid .row .col-md-4 {
+  width: 100%;
+  margin: 0 auto;
+  padding: 15px 0;
+}
+
+.body-home .sections #Contact .container-fluid .row .col-md-4 h3 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+@media (max-width: 1000px) {
+  .body-home .sections #Contact .container-fluid .row a {
+    font-size: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .body-home .sections #Contact .container-fluid .row:last-child .col-md-4 {
+    margin-bottom: 20vh;
+  }
+}
+
+@media only screen and (min-height: 900px) {
+  .body-home .sections #Contact .container-fluid {
+    overflow-y: hidden;
+  }
+}
+
+.body-home .sections #Services {
+  display: none;
+  margin: 0 auto;
+  width: 100%;
+  overflow-y: auto;
+  background-repeat: repeat;
+  background-position: center;
+  background-size: contain;
+  background-attachment: fixed;
+  background-color: #1b1b1b;
+}
+
+.body-home .sections #Services .container-fluid {
+  margin: 0;
+  background-color: transparent;
+}
+
+.body-home .sections #Services .container-fluid .col {
+  padding-right: 10rem;
+  padding-left: 10rem;
+  margin: auto 0;
+  -webkit-transition: all .5s ease-out;
+  -moz-transition: all .5s ease-out;
+  -o-transition: all .5s ease-out;
+  transition: all .5s ease-out;
+}
+
+.body-home .sections #Services .container-fluid .col h1 {
+  font-size: 5rem;
+  font-family: fuentean;
+  color: #fadc7b;
+  text-shadow: 0.1em 0.1em 0.2em black;
+}
+
+.body-home .sections #Services .container-fluid .col h2 {
+  color: white;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+  font-size: 2em;
+  text-align: left;
+}
+
+.body-home .sections #Services .container-fluid .col p {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+@media only screen and (max-width: 950px) {
+  .body-home .sections #Services .container-fluid .col {
+    -webkit-transition: all .5s ease-out;
+    -moz-transition: all .5s ease-out;
+    -o-transition: all .5s ease-out;
+    transition: all .5s ease-out;
+    padding-right: 5vw;
+    padding-left: 5vw;
+  }
+  .body-home .sections #Services .container-fluid .col h1 {
+    font-size: 3rem;
+    -webkit-transition: all .5s ease-out;
+    -moz-transition: all .5s ease-out;
+    -o-transition: all .5s ease-out;
+    transition: all .5s ease-out;
+  }
+  .body-home .sections #Services .container-fluid .col h2 {
+    font-size: 1.5em;
+    -webkit-transition: all .5s ease-out;
+    -moz-transition: all .5s ease-out;
+    -o-transition: all .5s ease-out;
+    transition: all .5s ease-out;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .body-home .sections #Services .container-fluid .col {
+    -webkit-transition: all .5s ease-out;
+    -moz-transition: all .5s ease-out;
+    -o-transition: all .5s ease-out;
+    transition: all .5s ease-out;
+    padding-right: 0vw;
+    padding-left: 0vw;
+  }
+  .body-home .sections #Services .container-fluid .col h1 {
+    font-size: 2rem;
+    -webkit-transition: all .5s ease-out;
+    -moz-transition: all .5s ease-out;
+    -o-transition: all .5s ease-out;
+    transition: all .5s ease-out;
+  }
+}
+
+.body-home .sections #Services .container-fluid .sepa {
+  padding-top: 1rem;
+  padding-right: 5px;
+  padding-left: 5px;
+  padding: 22px 0.75rem 0;
+}
+
+.body-home .sections #Services .container-fluid .sepa div {
+  border-style: dotted;
+}
+
+.body-home .sections #redes {
+  display: none;
+  background-repeat: repeat;
+  background-position: center;
+  background-size: contain;
+  background-attachment: fixed;
+}
+
+.body-home .sections #redes .cont {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.body-home .sections #redes .cont .container {
+  width: 100%;
+  background: -prefix-linear-gradient(button, #f9f295, #ff7f9f);
+  background: linear-gradient(to top, #f9f295, #ff7f9f);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.body-home .sections #redes .cont .container .pl-0 {
+  padding-left: 0 !important;
+}
+
+.body-home .sections #redes .cont .container .mb-0 {
+  margin-bottom: 0 !important;
+}
+
+.body-home .sections #redes .cont .container a, .body-home .sections #redes .cont .container a:hover {
+  color: #149dcc;
+}
+
+.body-home .sections #redes .cont .container a, .body-home .sections #redes .cont .container a:hover {
+  text-decoration: none;
+}
+
+.body-home .sections #redes .cont .container a {
+  font-style: normal;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.body-home .sections #redes .cont .container i {
+  font-size: 32px;
+  color: #ff3366;
+  padding-right: 0.5rem !important;
+  padding-left: 0.5rem !important;
+}
+
+@media (orientation: landscape) {
+  .body-home .sections #redes .cont .container {
+    height: 100%;
+  }
+}
+
+.body-home .sections #Politica {
+  display: none;
+  background: -prefix-linear-gradient(button, #f9f295, #ff7f9f);
+  background: linear-gradient(to top, #f9f295, #ff7f9f);
+  overflow-y: auto;
+}
+
+.body-home .sections #Politica .contenedor {
+  background: white;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 12rem;
+  margin-bottom: 6%;
+  height: auto;
+}
+
+.body-home .sections #Politica .contenedor div {
+  margin-top: 10%;
+  width: 90%;
+  margin: 0 auto;
+  height: 90%;
+  color: black;
+  font-family: 'Raleway';
+}
+
+.body-home .sections #Politica .contenedor div p {
+  font-size: 16px;
+}
+
+.body-home .sections #Politica .contenedor div p:last-child {
+  margin-bottom: 3rem;
+}
+
+.body-home .sections #Politica .contenedor div h2:first-child {
+  margin-top: 4rem;
+}
+
+.body-home .sections #Politica .contenedor div h2 {
+  text-transform: uppercase;
+  text-decoration: underline;
+}
+
+@media (max-height: 900px) {
+  .body-home .sections #Contact {
+    width: 100%;
+  }
+}
+
+/**
+* ! ------------------------ Template Header ------------------------
+*/
+body {
+  margin: 0;
+  font-family: HK Grotesk, sans-serif;
+  font-size: .9rem;
+  font-weight: 400;
+  color: #ffffff;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  height: auto;
+  /**
+    * Todo: grid del header --> header.html
+    */
+  /**
+    *  Todo: grid del header:hover --> header.html
+    */
+}
+
+body .principal-header {
+  position: absolute;
+  height: auto;
+  z-index: 991;
+  width: 100%;
+}
+
+body .principal-header .grid-container-header {
+  top: 0;
+  position: static;
+  background-color: transparent;
+  color: white;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 25% 50% 19%;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-template-areas: "a b c";
+  z-index: 999;
+  text-align: center;
+  -webkit-transition: all .5s ease-out;
+  -moz-transition: all .5s ease-out;
+  -o-transition: all .5s ease-out;
+  transition: all .5s ease-out;
+}
+
+body .principal-header .grid-container-header .a {
+  position: relative;
+  grid-area: a;
+  /**
+                * Todo: boton del menu  --> header.html
+                */
+}
+
+body .principal-header .grid-container-header .a .menu_toggler {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 999;
+  height: 28px;
+  width: 28px;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+body .principal-header .grid-container-header .a .menu_toggler span, body .principal-header .grid-container-header .a .menu_toggler span::before, body .principal-header .grid-container-header .a .menu_toggler span::after {
+  position: absolute;
+  content: "";
+  width: 28px;
+  height: 2.5px;
+  background: #fafafa;
+  border-radius: 20px;
+  transition: 500ms cubic-bezier(0.77, 0, 0.175, 1);
+  left: 0;
+}
+
+body .principal-header .grid-container-header .a .menu_toggler span::before {
+  top: -8px;
+}
+
+body .principal-header .grid-container-header .a .menu_toggler span::after {
+  top: 8px;
+}
+
+body .principal-header .grid-container-header .a .menu_toggler.active > span {
+  background: transparent;
+}
+
+body .principal-header .grid-container-header .a .menu_toggler.active > span::before,
+body .principal-header .grid-container-header .a .menu_toggler.active > span::after {
+  background: black;
+  top: 0px;
+}
+
+body .principal-header .grid-container-header .a .menu_toggler.active > span::before {
+  transform: rotate(-225deg);
+}
+
+body .principal-header .grid-container-header .a .menu_toggler.active > span::after {
+  transform: rotate(225deg);
+}
+
+body .principal-header .grid-container-header .b {
+  grid-area: b;
+}
+
+body .principal-header .grid-container-header .b a {
+  display: inline-block;
+  text-decoration: none;
+  /**
+                    * Todo: Parte del Logo --> header.html
+                    */
+}
+
+body .principal-header .grid-container-header .b a img {
+  display: block;
+  width: 20rem;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  -webkit-transition: all .5s ease-out;
+  -moz-transition: all .5s ease-out;
+  -o-transition: all .5s ease-out;
+  transition: all .5s ease-out;
+}
+
+@media only screen and (max-width: 1400px) {
+  body .principal-header .grid-container-header .b a img {
+    display: block;
+    width: 15rem;
+    -webkit-transition: all .5s ease-out;
+    -moz-transition: all .5s ease-out;
+    -o-transition: all .5s ease-out;
+    transition: all .5s ease-out;
+  }
+}
+
+body .principal-header .grid-container-header .b a .l2 {
+  -webkit-transition: all .5s ease-out;
+  -moz-transition: all .5s ease-out;
+  -o-transition: all .5s ease-out;
+  transition: all .5s ease-out;
+  display: none;
+}
+
+body .principal-header .grid-container-header .c {
+  grid-area: c;
+}
+
+body .principal-header {
+  position: absolute;
+  height: auto;
+  z-index: 991;
+  width: 100%;
+}
+
+body .principal-header .open-w,
+body .principal-header .grid-container-header:hover {
+  background-color: white;
+  color: black;
+  position: static;
+}
+
+body .principal-header .open-w .a .menu_toggler.active > span,
+body .principal-header .grid-container-header:hover .a .menu_toggler.active > span {
+  background: transparent;
+}
+
+body .principal-header .open-w .a .menu_toggler span, body .principal-header .open-w .a .menu_toggler span::before,
+body .principal-header .grid-container-header:hover .a .menu_toggler span,
+body .principal-header .grid-container-header:hover .a .menu_toggler span::before {
+  position: absolute;
+  content: "";
+  width: 28px;
+  height: 2.5px;
+  background: black;
+  border-radius: 20px;
+  transition: 500ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+body .principal-header .open-w .a .menu_toggler span::after,
+body .principal-header .grid-container-header:hover .a .menu_toggler span::after {
+  height: 2.5px;
+  position: absolute;
+  content: "";
+  width: 28px;
+  background: black;
+  border-radius: 20px;
+  transition: 500ms cubic-bezier(0.77, 0, 0.175, 1);
+  padding-left: -50px;
+}
+
+body .principal-header .open-w .b a,
+body .principal-header .grid-container-header:hover .b a {
+  /**
+                    * Todo: Parte del Logo:hover --> header.html
+                    */
+}
+
+body .principal-header .open-w .b a .l1,
+body .principal-header .grid-container-header:hover .b a .l1 {
+  display: none;
+  -webkit-transition: all .5s ease-out;
+  -moz-transition: all .5s ease-out;
+  -o-transition: all .5s ease-out;
+  transition: all .5s ease-out;
+}
+
+body .principal-header .open-w .b a .l2,
+body .principal-header .grid-container-header:hover .b a .l2 {
+  display: block;
+  -webkit-transition: all .5s ease-out;
+  -moz-transition: all .5s ease-out;
+  -o-transition: all .5s ease-out;
+  transition: all .5s ease-out;
+}
+
+body .principal-header .grid-container-header.hover {
+  background-color: white;
+  color: black;
+  position: static;
+}
+
+body .principal-header .grid-container-header.hover .a .menu_toggler.active > span {
+  background: transparent;
+}
+
+body .principal-header .grid-container-header.hover .a .menu_toggler span, body .principal-header .grid-container-header.hover .a .menu_toggler span::before {
+  position: absolute;
+  content: "";
+  width: 28px;
+  height: 2.5px;
+  background: black;
+  border-radius: 20px;
+  transition: 500ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+body .principal-header .grid-container-header.hover .a .menu_toggler span::after {
+  height: 2.5px;
+  position: absolute;
+  content: "";
+  width: 28px;
+  background: black;
+  border-radius: 20px;
+  transition: 500ms cubic-bezier(0.77, 0, 0.175, 1);
+  padding-left: -50px;
+}
+
+body .principal-header .grid-container-header.hover .b a {
+  /**
+                    * Todo: Parte del Logo:hover --> header.html
+                    */
+}
+
+body .principal-header .grid-container-header.hover .b a .l1 {
+  display: none;
+  -webkit-transition: all .5s ease-out;
+  -moz-transition: all .5s ease-out;
+  -o-transition: all .5s ease-out;
+  transition: all .5s ease-out;
+}
+
+body .principal-header .grid-container-header.hover .b a .l2 {
+  display: block;
+  -webkit-transition: all .5s ease-out;
+  -moz-transition: all .5s ease-out;
+  -o-transition: all .5s ease-out;
+  transition: all .5s ease-out;
+}
+
+/**
+* ! ------------------------ Template Login ------------------------
+*/
+.grid_content {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr 0fr;
+  gap: 0px 0px;
+  grid-template-areas: "top" "center" "foot";
+}
+
+.grid_content .top {
+  /**
+        * Todo: Parte del header/menu/logo/...:hover --> header.html
+        */
+  grid-area: top;
+  /**
+        * ? carrousel --> carrousel.html
+        */
+  height: auto;
+}
+
+.grid_content .center {
+  grid-area: center;
+  margin: 0;
+  /**
+        * Todo: Parte del menu de login register y recover password --> login.html
+        */
+}
+
+.grid_content .center .menu {
+  position: absolute;
+  left: -30vw;
+  z-index: 990;
+  color: #005c9c;
+  background: rgba(250, 250, 250, 0.7);
+  -webkit-clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+  width: 30vw;
+  height: 100vh;
+  padding: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: 300ms left cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+@media only screen and (max-width: 600px) {
+  .grid_content .center .menu {
+    left: -250px;
+    padding: 50px;
+    -webkit-transition: all .5s ease-out;
+    -moz-transition: all .5s ease-out;
+    -o-transition: all .5s ease-out;
+    transition: all .5s ease-out;
+    width: 234px;
+  }
+}
+
+@media only screen and (max-height: 550px) {
+  .grid_content .center .menu {
+    position: -webkit-fixed;
+    position: fixed;
+    height: 111vh;
+    width: 250px;
+    left: -250px;
+    padding-top: 111px;
+    -webkit-transition: all .5s ease-out;
+    -moz-transition: all .5s ease-out;
+    -o-transition: all .5s ease-out;
+    transition: all .5s ease-out;
+  }
+}
+
+.grid_content .center .menu.active {
+  left: 0;
+}
+
+.grid_content .center .menu p {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.grid_content .center .bgmenu {
+  left: -1000vw;
+  height: 100vh;
+  width: 100%;
+  background: inherit;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  -webkit-box-shadow: inset 0 0 0 3000px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 0 0 3000px rgba(0, 0, 0, 0.2);
+  z-index: 989;
+  display: flex;
+  position: absolute;
+  transition: 300ms left cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+@media only screen and (max-height: 550px) {
+  .grid_content .center .bgmenu {
+    position: fixed;
+    height: 111vh;
+    webkit-transition: all .5s ease-out;
+    -moz-transition: all .5s ease-out;
+    -o-transition: all .5s ease-out;
+    transition: all .5s ease-out;
+  }
+}
+
+.grid_content .center .bgmenu.active {
+  left: 0;
+}
+
+.grid_content .center .logged {
+  margin-top: 5%;
+  text-align: center;
+  color: white;
+}
+
+.grid_content .center .all-body {
+  top: 0;
+  padding: 0;
+  margin-top: 24vh;
+  width: 100%;
+  height: auto;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: static;
+  -webkit-transition: all .5s ease-out;
+  -moz-transition: all .5s ease-out;
+  -o-transition: all .5s ease-out;
+  transition: all .5s ease-out;
+}
+
+.grid_content .center .all-body .backblur {
+  width: 40%;
+  display: block;
+  background: inherit;
+  backdrop-filter: blur(10px);
+  min-height: 20px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(103, 103, 103, 0.15);
+  box-shadow: inset 0 0 0 3000px rgba(255, 255, 255, 0.2);
+  -webkit-backdrop-filter: blur(10px);
+  -moz-backdrop-filter: blur(10px);
+  -o-backdrop-filter: blur(10px);
+  -webkit-box-shadow: inset 0 0 0 3000px rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  padding: 16px;
+  -webkit-transition: all .5s ease-out;
+  -moz-transition: all .5s ease-out;
+  -o-transition: all .5s ease-out;
+  transition: all .5s ease-out;
+}
+
+.grid_content .center .all-body .backblur .login {
+  display: none;
+}
+
+.grid_content .center .all-body .backblur .login .login-head {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  margin-top: 20px;
+  color: white;
+  font-size: 40px;
+  text-align: center;
+  line-height: 1;
+  letter-spacing: -1px;
+  margin: 0 0 10px;
+}
+
+.grid_content .center .all-body .backblur .login .login-twohead {
+  font-family: 'Raleway', sans-serif;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.grid_content .center .all-body .backblur .login form {
+  text-align: left;
+  font-family: 'Raleway', sans-serif;
+  color: white;
+  text-decoration: none;
+}
+
+.grid_content .center .all-body .backblur .login form .division {
+  float: none;
+  margin: 18px auto 18px;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+.grid_content .center .all-body .backblur .login form .division .line {
+  border-top: 1px solid #DFDFDF;
+  position: absolute;
+  top: 10px;
+  width: 34%;
+}
+
+.grid_content .center .all-body .backblur .login form .division .line .l {
+  left: 0;
+}
+
+.grid_content .center .all-body .backblur .login form .division span {
+  color: #DFDFDF;
+  font-size: 17px;
+}
+
+.grid_content .center .all-body .backblur .login form .division .line.r {
+  right: 0;
+}
+
+.grid_content .center .all-body .backblur .login form a {
+  text-decoration: none;
+  color: white;
+}
+
+.grid_content .center .all-body .backblur .login form a:hover {
+  text-decoration: underline;
+  color: #bdbdbd;
+}
+
+.grid_content .center .all-body .backblur .login form div label {
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.grid_content .center .all-body .backblur .login form div #id_username,
+.grid_content .center .all-body .backblur .login form div #id_password,
+.grid_content .center .all-body .backblur .login form div #id_password1,
+.grid_content .center .all-body .backblur .login form div #id_password2,
+.grid_content .center .all-body .backblur .login form div #id_email,
+.grid_content .center .all-body .backblur .login form div #id_phone,
+.grid_content .center .all-body .backblur .login form div #id_new_password1,
+.grid_content .center .all-body .backblur .login form div #id_new_password2 {
+  width: 100%;
+  height: 30px;
+  opacity: 0.4;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  color: black;
+  margin-bottom: 10px;
+}
+
+.grid_content .center .all-body .backblur .login form input#recordar {
+  width: 5%;
+  height: 18px;
+  opacity: 0.4;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  color: black;
+  margin-bottom: 10px;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.grid_content .center .all-body .backblur .login form .recordar {
+  font-size: 12px;
+}
+
+.grid_content .center .all-body .backblur .login form input.submit {
+  width: 48%;
+  background-color: deepskyblue;
+  color: white;
+  background-color: light;
+  height: auto;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+}
+
+.grid_content .center .all-body .backblur .login form input.button {
+  /*O usando los padding*/
+  width: 100%;
+  background-color: deepskyblue;
+  color: white;
+  background-color: light;
+  height: auto;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+}
+
+.grid_content .center .all-body .backblur .login form input.register_button {
+  width: 100%;
+  background-color: deepskyblue;
+  color: white;
+  background-color: light;
+  height: auto;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+}
+
+.grid_content .center .all-body .backblur .login form p {
+  color: white;
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.grid_content .center .all-body .backblur .login form p.error-pass {
+  -backdrop-filter: blur(10px);
+  box-shadow: inset 0 0 0 3000px rgba(255, 0, 0, 0.308);
+  -webkit-backdrop-filter: blur(10px);
+  -webkit-box-shadow: inset 0 0 0 3000px rgba(255, 0, 0, 0.308);
+  border-radius: 4px;
+}
+
+.grid_content .center .all-body .backblur .login form p.regist:hover, .grid_content .center .all-body .backblur .login form p.recov:hover {
+  text-decoration: underline;
+  color: #b6b5b5;
+}
+
+.grid_content .center .all-body .backblur .login.active {
+  display: block;
+}
+
+.grid_content .center .all-body .backblur .register {
+  display: none;
+}
+
+.grid_content .center .all-body .backblur .register .register-head {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  margin-top: 20px;
+  color: white;
+  font-size: 40px;
+  text-align: center;
+  line-height: 1;
+  letter-spacing: -1px;
+  margin: 0 0 10px;
+}
+
+.grid_content .center .all-body .backblur .register .register-twohead {
+  font-family: 'Raleway', sans-serif;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.grid_content .center .all-body .backblur .register form {
+  text-align: left;
+  font-family: 'Raleway', sans-serif;
+  color: white;
+  text-decoration: none;
+}
+
+.grid_content .center .all-body .backblur .register form .division {
+  float: none;
+  margin: 18px auto 18px;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+.grid_content .center .all-body .backblur .register form .division .line {
+  border-top: 1px solid #DFDFDF;
+  position: absolute;
+  top: 10px;
+  width: 34%;
+}
+
+.grid_content .center .all-body .backblur .register form .division .line.l {
+  left: 0;
+}
+
+.grid_content .center .all-body .backblur .register form .division .line.r {
+  right: 0;
+}
+
+.grid_content .center .all-body .backblur .register form .division span {
+  color: #DFDFDF;
+  font-size: 17px;
+}
+
+.grid_content .center .all-body .backblur .register form a {
+  text-decoration: none;
+  color: white;
+}
+
+.grid_content .center .all-body .backblur .register form a:hover {
+  text-decoration: underline;
+  color: #bdbdbd;
+}
+
+.grid_content .center .all-body .backblur .register form div label {
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.grid_content .center .all-body .backblur .register form div #id_username,
+.grid_content .center .all-body .backblur .register form div #id_password,
+.grid_content .center .all-body .backblur .register form div #id_password1,
+.grid_content .center .all-body .backblur .register form div #id_password2,
+.grid_content .center .all-body .backblur .register form div #id_email,
+.grid_content .center .all-body .backblur .register form div #id_phone {
+  width: 100%;
+  height: 30px;
+  opacity: 0.4;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  color: black;
+  margin-bottom: 10px;
+  font-size: large;
+}
+
+.grid_content .center .all-body .backblur .register form input#recordar {
+  width: 5%;
+  height: 18px;
+  opacity: 0.4;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  color: black;
+  margin-bottom: 10px;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.grid_content .center .all-body .backblur .register form .recordar {
+  font-size: 12px;
+}
+
+.grid_content .center .all-body .backblur .register form input.submit {
+  width: 48%;
+  background-color: deepskyblue;
+  color: white;
+  background-color: light;
+  height: auto;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+}
+
+.grid_content .center .all-body .backblur .register form input.button {
+  /*O usando los padding*/
+  width: 100%;
+  background-color: deepskyblue;
+  color: white;
+  background-color: light;
+  height: auto;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+}
+
+.grid_content .center .all-body .backblur .register form input.register_button {
+  width: 100%;
+  background-color: deepskyblue;
+  color: white;
+  background-color: light;
+  height: auto;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+}
+
+.grid_content .center .all-body .backblur .register form p {
+  color: white;
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.grid_content .center .all-body .backblur .register form p.error-pass {
+  -backdrop-filter: blur(10px);
+  box-shadow: inset 0 0 0 3000px rgba(255, 0, 0, 0.308);
+  -webkit-backdrop-filter: blur(10px);
+  -webkit-box-shadow: inset 0 0 0 3000px rgba(255, 0, 0, 0.308);
+  border-radius: 4px;
+}
+
+.grid_content .center .all-body .backblur .register form p.logg:hover, .grid_content .center .all-body .backblur .register form p.recove:hover {
+  text-decoration: underline;
+  color: #b6b5b5;
+}
+
+.grid_content .center .all-body .backblur .register.active {
+  display: block;
+}
+
+.grid_content .center .all-body .backblur .recover {
+  display: none;
+}
+
+.grid_content .center .all-body .backblur .recover .recover-head {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  margin-top: 20px;
+  color: white;
+  font-size: 40px;
+  text-align: center;
+  line-height: 1;
+  letter-spacing: -1px;
+  margin: 0 0 10px;
+}
+
+.grid_content .center .all-body .backblur .recover .recover-twohead {
+  font-family: 'Raleway', sans-serif;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.grid_content .center .all-body .backblur .recover form {
+  text-align: left;
+  font-family: 'Raleway', sans-serif;
+  color: white;
+  text-decoration: none;
+}
+
+.grid_content .center .all-body .backblur .recover form .error-pass {
+  color: white;
+  background-color: red;
+  border: solid 0px;
+  border-radius: 5px;
+}
+
+.grid_content .center .all-body .backblur .recover form .division {
+  float: none;
+  margin: 18px auto 18px;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+.grid_content .center .all-body .backblur .recover form .division .line {
+  border-top: 1px solid #DFDFDF;
+  position: absolute;
+  top: 10px;
+  width: 34%;
+}
+
+.grid_content .center .all-body .backblur .recover form .division .line.l {
+  left: 0;
+}
+
+.grid_content .center .all-body .backblur .recover form .division .line.r {
+  right: 0;
+}
+
+.grid_content .center .all-body .backblur .recover form .division span {
+  color: #DFDFDF;
+  font-size: 17px;
+}
+
+.grid_content .center .all-body .backblur .recover form a {
+  text-decoration: none;
+  color: white;
+}
+
+.grid_content .center .all-body .backblur .recover form a:hover {
+  text-decoration: underline;
+  color: #bdbdbd;
+}
+
+.grid_content .center .all-body .backblur .recover form div label {
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.grid_content .center .all-body .backblur .recover form div #id_username,
+.grid_content .center .all-body .backblur .recover form div #id_password,
+.grid_content .center .all-body .backblur .recover form div #id_password1,
+.grid_content .center .all-body .backblur .recover form div #id_password2,
+.grid_content .center .all-body .backblur .recover form div #id_email,
+.grid_content .center .all-body .backblur .recover form div #id_phone,
+.grid_content .center .all-body .backblur .recover form div #new_password1,
+.grid_content .center .all-body .backblur .recover form div #new_password2 {
+  width: 100%;
+  height: 30px;
+  opacity: 0.4;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  color: black;
+  margin-bottom: 10px;
+  font-size: large;
+}
+
+.grid_content .center .all-body .backblur .recover form input#recordar {
+  width: 5%;
+  height: 18px;
+  opacity: 0.4;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  color: black;
+  margin-bottom: 10px;
+  align-items: center;
+  vertical-align: middle;
+  font-size: large;
+}
+
+.grid_content .center .all-body .backblur .recover form .recordar {
+  font-size: 12px;
+}
+
+.grid_content .center .all-body .backblur .recover form input.submit {
+  width: 48%;
+  background-color: deepskyblue;
+  color: white;
+  background-color: light;
+  height: auto;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+}
+
+.grid_content .center .all-body .backblur .recover form input.button {
+  /*O usando los padding*/
+  width: 100%;
+  background-color: deepskyblue;
+  color: white;
+  background-color: light;
+  height: auto;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+}
+
+.grid_content .center .all-body .backblur .recover form input.recover_button {
+  width: 100%;
+  background-color: deepskyblue;
+  color: white;
+  background-color: light;
+  height: auto;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+}
+
+.grid_content .center .all-body .backblur .recover form p {
+  color: white;
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.grid_content .center .all-body .backblur .recover form p.logge:hover {
+  text-decoration: underline;
+  color: #b6b5b5;
+}
+
+.grid_content .center .all-body .backblur .recover.active {
+  display: block;
+}
+
+@media screen and (max-width: 1000px) {
+  .grid_content .center .all-body .backblur {
+    width: 95%;
+    -webkit-transition: all .5s ease-out;
+    -moz-transition: all .5s ease-out;
+    -o-transition: all .5s ease-out;
+    transition: all .5s ease-out;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .grid_content .center .all-body {
+    margin-top: 16vh;
+    -webkit-transition: all .5s ease-out;
+    -moz-transition: all .5s ease-out;
+    -o-transition: all .5s ease-out;
+    transition: all .5s ease-out;
+  }
+}
+
+.grid_content .center .logg a {
+  color: greenyellow;
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.grid_content .center .logg a:hover {
+  text-decoration: underline;
+  color: #73fac6;
+}
+
+.grid_content .center .all-body .backblur .login form div #id_username,
+.grid_content .center .all-body .backblur .login form div #id_password {
+  width: 100%;
+  height: 30px;
+  opacity: 0.4;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  color: black;
+  margin-bottom: 10px;
+  font-size: large;
+}
+
+.grid_content .foot {
+  display: none;
+}
+
+/**
+* Todo: carrousel --> carrousel.html
+*/
+.carousel-fade .carousel-inner .item {
+  top: 0;
+  opacity: 0;
+  transition-property: opacity;
+}
+
+.carousel-fade .carousel-inner .active {
+  opacity: 1;
+}
+
+.carousel-fade .carousel-inner .active .left, .carousel-fade .carousel-inner .active .right {
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+}
+
+.carousel-fade .carousel-inner .next.left,
+.carousel-fade .carousel-inner .prev.right {
+  opacity: 1;
+}
+
+.carousel-fade .carousel-control {
+  z-index: 2;
+}
+
+/***/
+@media all and (transform-3d), (-webkit-transform-3d) {
+  .carousel-fade .carousel-inner > .item.next,
+  .carousel-fade .carousel-inner > .item.active.right {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  .carousel-fade .carousel-inner > .item.prev,
+  .carousel-fade .carousel-inner > .item.active.left {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  .carousel-fade .carousel-inner > .item.next.left,
+  .carousel-fade .carousel-inner > .item.prev.right,
+  .carousel-fade .carousel-inner > .item.active {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.carousel {
+  z-index: -99;
+}
+
+.carousel .item {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel .item div {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  width: 100%;
+}
+
+/**
+* ! ------------------------ Template inicio.html ------------------------
+*/
+.reservas {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.reservas .grid-container-role {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas: "a" "b" "c";
+}
+
+.reservas .grid-container-role .a {
+  grid-area: a;
+  position: fixed;
+  width: 100%;
+}
+
+.reservas .grid-container-role .a .top-header {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  z-index: 991;
+}
+
+.reservas .grid-container-role .a .top-header .principal-header {
+  position: fixed;
+  -webkit-transition: all .5s ease-out;
+  -moz-transition: all .5s ease-out;
+  -o-transition: all .5s ease-out;
+  transition: all .5s ease-out;
+  top: 0;
+  background: transparent;
+  -webkit-box-shadow: inset 0 0 0 3000px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 0 3000px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.reservas .grid-container-role .a .contain-menu .menu {
+  position: fixed;
+  left: -200vw;
+  z-index: 990;
+  color: #005c9c;
+  background: rgba(250, 250, 250, 0.7);
+  -webkit-clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+  width: 30vw;
+  height: 100vh;
+  padding: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: 300ms left cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.reservas .grid-container-role .a .contain-menu .menu p {
+  font-family: 'Raleway';
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.reservas .grid-container-role .a .contain-menu .menu p a {
+  color: black;
+}
+
+@media only screen and (max-width: 1000px) {
+  .reservas .grid-container-role .a .contain-menu .menu {
+    position: -webkit-fixed;
+    position: fixed;
+    height: 111vh;
+    width: 100vw;
+    left: -200vw;
+    text-align: center;
+    -webkit-clip-path: none;
+    clip-path: none;
+    -webkit-transition: all .5s ease-out;
+    -moz-transition: all .5s ease-out;
+    -o-transition: all .5s ease-out;
+    transition: all .5s ease-out;
+    padding: 0;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .reservas .grid-container-role .a .contain-menu .menu div {
+    overflow-y: auto;
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+    max-height: 100vh;
+  }
+}
+
+.reservas .grid-container-role .a .contain-menu .menu.active {
+  left: 0;
+}
+
+.reservas .grid-container-role .a .contain-menu .bgmenu {
+  left: -1000vw;
+  height: 100vh;
+  width: 100%;
+  background: inherit;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  -webkit-box-shadow: inset 0 0 0 3000px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 0 0 3000px rgba(0, 0, 0, 0.2);
+  z-index: 989;
+  display: flex;
+  position: fixed;
+  transition: 300ms left cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+@media only screen and (max-height: 550px) {
+  .reservas .grid-container-role .a .contain-menu .bgmenu {
+    position: fixed;
+    height: 111vh;
+    webkit-transition: all .5s ease-out;
+    -moz-transition: all .5s ease-out;
+    -o-transition: all .5s ease-out;
+    transition: all .5s ease-out;
+  }
+}
+
+.reservas .grid-container-role .a .contain-menu .bgmenu.active {
+  left: 0;
+}
+
+.reservas .grid-container-role .b h1 {
+  width: 100%;
+  height: auto;
+  text-align: center;
+  font-family: fuentean;
+  color: #fadc7b;
+  text-shadow: 0.1em 0.1em 0.2em black;
+  font-size: 6vw;
+  text-transform: uppercase;
+  padding-top: 8rem;
+}
+
+.reservas .grid-container-role .b .principal-contain {
+  font-family: 'Raleway', sans-serif;
+  margin: 0 auto;
+  width: 90%;
+  height: auto;
+  background-color: white;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.reservas .grid-container-role .b .principal-contain div {
+  width: 100%;
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id {
+  text-align: center;
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id input, .reservas .grid-container-role .b .principal-contain div #form-id textarea {
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: montserrat;
+  color: #2C3E50;
+  font-size: 13px;
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id .progress {
+  margin: 0 auto;
+  margin-bottom: 20px;
+  padding: 20px;
+  counter-reset: step;
+  color: black;
+  height: auto;
+  overflow: hidden;
+  font-size: .75rem;
+  display: flex;
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id .progress li {
+  list-style-type: none;
+  color: white;
+  text-transform: uppercase;
+  font-size: 9px;
+  width: 33.33%;
+  float: left;
+  color: black;
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id .progress li.active:before, .reservas .grid-container-role .b .principal-contain div #form-id .progress li.active:after {
+  background: #27AE60;
+  color: white;
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id .progress li:before {
+  content: counter(step);
+  counter-increment: step;
+  width: 20px;
+  line-height: 20px;
+  display: block;
+  font-size: 10px;
+  color: #333;
+  background: rgba(186, 185, 185, 0.768);
+  border-radius: 3px;
+  margin: 0 auto 5px auto;
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id fieldset {
+  background: white;
+  border: 0 none;
+  border-radius: 3px;
+  box-sizing: border-box;
+  width: 80%;
+  margin: 0 10%;
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id fieldset .fs-title {
+  font-size: 15px;
+  text-transform: uppercase;
+  color: #2C3E50;
+  margin-bottom: 10px;
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id fieldset input[type="submit"] {
+  display: none;
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id fieldset .contain-workers {
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 33vh;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id fieldset .contain-workers .form__answer {
+  flex: 0 0 240px;
+  margin: 0 1%;
+  height: auto;
+  vertical-align: top;
+  font-size: 22px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id fieldset .contain-workers .form__answer input[type="radio"] {
+  opacity: 0;
+  width: 0;
+  background-color: initial;
+  cursor: default;
+  appearance: auto;
+  box-sizing: border-box;
+  margin: 3px 3px 0px 5px;
+  padding: initial;
+  border: initial;
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id fieldset .contain-workers .form__answer [type=checkbox], .reservas .grid-container-role .b .principal-contain div #form-id fieldset .contain-workers .form__answer [type=radio] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id fieldset .contain-workers .form__answer button, .reservas .grid-container-role .b .principal-contain div #form-id fieldset .contain-workers .form__answer input, .reservas .grid-container-role .b .principal-contain div #form-id fieldset .contain-workers .form__answer optgroup, .reservas .grid-container-role .b .principal-contain div #form-id fieldset .contain-workers .form__answer select, .reservas .grid-container-role .b .principal-contain div #form-id fieldset .contain-workers .form__answer textarea {
+  font-family: sans-serif;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id fieldset .contain-workers .form__answer button, .reservas .grid-container-role .b .principal-contain div #form-id fieldset .contain-workers .form__answer hr, .reservas .grid-container-role .b .principal-contain div #form-id fieldset .contain-workers .form__answer input {
+  overflow: visible;
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id fieldset .contain-workers .form__answer input {
+  -webkit-writing-mode: horizontal-tb !important;
+  text-rendering: auto;
+  color: -internal-light-dark(black, white);
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  appearance: auto;
+  background-color: -internal-light-dark(white, #3b3b3b);
+  -webkit-rtl-ordering: logical;
+  cursor: text;
+  margin: 0em;
+  font: 400 13.3333px Arial;
+  padding: 1px 2px;
+  border-width: 2px;
+  border-style: inset;
+  border-color: -internal-light-dark(#767676, #858585);
+  border-image: initial;
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id fieldset .contain-workers .form__answer input[type=radio]:checked ~ label {
+  opacity: 1;
+  border: 2px solid red;
+  border-radius: 10px;
+  color: black;
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id fieldset .contain-workers .form__answer input[type=radio]:checked ~ label img {
+  width: 50%;
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id fieldset .contain-workers .form__answer label {
+  border: 2px solid rgba(61, 61, 61, 0.309);
+  box-sizing: border-box;
+  display: block;
+  height: auto;
+  width: 100%;
+  padding: 10px 10px 10px 10px;
+  cursor: pointer;
+  opacity: 1;
+  transition: all 0.5s ease-in-out;
+  color: rgba(0, 0, 0, 0.192);
+  cursor: default;
+  filter: alpha(opacity=50);
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id fieldset .contain-workers .form__answer label img {
+  transition: all 0.5s ease-in-out;
+  width: 30%;
+  border-radius: 50%;
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id fieldset .contain-workers .form__answer .next.action-button {
+  display: none;
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id fieldset .contain-workers .form__answer .action-button {
+  width: 100px;
+  background: #27AE60;
+  font-weight: bold;
+  color: white;
+  border: 0 none;
+  border-radius: 1px;
+  cursor: pointer;
+  padding: 10px 5px;
+  margin: 10px 5px;
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id fieldset .contain-workers2 {
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 33vh;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id fieldset .contain-workers2 .form__answer {
+  flex: 0 0 240px;
+  width: 90%;
+  margin: 0 1%;
+  height: auto;
+  vertical-align: top;
+  font-size: 22px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id fieldset .contain-workers2 .form__answer input[type=radio] {
+  opacity: 0;
+  width: 0;
+  background-color: initial;
+  cursor: default;
+  appearance: auto;
+  box-sizing: border-box;
+  margin: 3px 3px 0px 5px;
+  padding: initial;
+  border: initial;
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id fieldset .contain-workers2 .form__answer [type=checkbox], .reservas .grid-container-role .b .principal-contain div #form-id fieldset .contain-workers2 .form__answer [type=radio] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id fieldset .contain-workers2 .form__answer button, .reservas .grid-container-role .b .principal-contain div #form-id fieldset .contain-workers2 .form__answer input, .reservas .grid-container-role .b .principal-contain div #form-id fieldset .contain-workers2 .form__answer optgroup, .reservas .grid-container-role .b .principal-contain div #form-id fieldset .contain-workers2 .form__answer select, .reservas .grid-container-role .b .principal-contain div #form-id fieldset .contain-workers2 .form__answer textarea {
+  font-family: sans-serif;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id fieldset .contain-workers2 .form__answer button, .reservas .grid-container-role .b .principal-contain div #form-id fieldset .contain-workers2 .form__answer hr, .reservas .grid-container-role .b .principal-contain div #form-id fieldset .contain-workers2 .form__answer input {
+  overflow: visible;
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id fieldset .contain-workers2 .form__answer input {
+  -webkit-writing-mode: horizontal-tb !important;
+  text-rendering: auto;
+  color: -internal-light-dark(black, white);
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  appearance: auto;
+  background-color: -internal-light-dark(white, #3b3b3b);
+  -webkit-rtl-ordering: logical;
+  cursor: text;
+  margin: 0em;
+  font: 400 13.3333px Arial;
+  padding: 1px 2px;
+  border-width: 2px;
+  border-style: inset;
+  border-color: -internal-light-dark(#767676, #858585);
+  border-image: initial;
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id fieldset .contain-workers2 .form__answer input[type=radio]:checked ~ label {
+  opacity: 1;
+  border: 2px solid red;
+  border-radius: 10px;
+  color: black;
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id fieldset .contain-workers2 .form__answer input[type=radio]:checked ~ label img {
+  width: 50%;
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id fieldset .contain-workers2 .form__answer label {
+  border: 2px solid rgba(61, 61, 61, 0.309);
+  box-sizing: border-box;
+  display: block;
+  height: auto;
+  width: 100%;
+  padding: 10px 10px 10px 10px;
+  cursor: pointer;
+  opacity: 1;
+  transition: all 0.5s ease-in-out;
+  color: rgba(0, 0, 0, 0.192);
+  cursor: default;
+  filter: alpha(opacity=50);
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id fieldset .contain-workers2 .form__answer label img {
+  transition: all 0.5s ease-in-out;
+  width: 30%;
+  border-radius: 50%;
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id fieldset #horas-container {
+  display: none;
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id fieldset #horas-container .contain-workers2 {
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 33vh;
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id fieldset #horas-container .contain-workers2 .form__answer_date {
+  flex: 0 0 10%;
+  width: auto;
+  margin: 0 1%;
+  height: auto;
+  vertical-align: top;
+  font-size: 22px;
+  text-align: center;
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id fieldset #horas-container .contain-workers2 .form__answer_date label {
+  border: 1px solid rgba(61, 61, 61, 0.309);
+  box-sizing: border-box;
+  border-radius: 35px;
+  display: block;
+  height: auto;
+  width: 100%;
+  padding: 10px 10px 10px 10px;
+  cursor: pointer;
+  opacity: 1;
+  transition: all 0.5s ease-in-out;
+  color: rgba(0, 0, 0, 0.192);
+  cursor: default;
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id fieldset #horas-container .contain-workers2 .form__answer_date input[type=radio] {
+  display: none;
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id fieldset #horas-container .contain-workers2 .form__answer_date input[type=radio]:checked ~ label {
+  opacity: 1;
+  border: 1px solid #ff0000;
+  color: black;
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id fieldset .action-button {
+  width: 100px;
+  background: #27AE60;
+  font-weight: bold;
+  color: white;
+  border: 0 none;
+  border-radius: 1px;
+  cursor: pointer;
+  padding: 10px 5px;
+  margin: 10px 5px;
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id fieldset .next.action-button {
+  display: none;
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id fieldset .action-button:hover, .reservas .grid-container-role .b .principal-contain div #form-id fieldset .action-button:focus {
+  box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+}
+
+.reservas .grid-container-role .b .principal-contain div #form-id fieldset:not(:first-of-type) {
+  display: none;
+}
+
+@media only screen and (max-width: 1000px) {
+  .reservas .grid-container-role .b h1 {
+    padding-top: 15rem;
+  }
+}
+
+@media only screen and (min-height: 1000px) {
+  .reservas .grid-container-role .b .contain-workers .form__answer {
+    width: 25rem;
+  }
+}
+
+@media only screen and (max-height: 1000px) {
+  .reservas .grid-container-role .b .contain-workers .form__answer {
+    width: 18rem;
+  }
+}
+
+.reservas .grid-container-role .b .reservas {
+  font-family: 'Raleway', sans-serif;
+  margin: 0 auto;
+  width: 90%;
+  height: auto;
+  background-color: white;
+  border-radius: 10px;
+  color: black;
+  text-align: center;
+  margin-bottom: 10rem;
+}
+
+.reservas .grid-container-role .b .reservas .searchButton {
+  width: 80%;
+  background-color: deepskyblue;
+  color: white;
+  background-color: light;
+  height: auto;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+}
+
+.reservas .grid-container-role .b .reservas span {
+  margin-right: 10px;
+}
+
+.reservas .grid-container-role .b .reservas form {
+  display: inline-block;
+}
+
+.reservas .grid-container-role .b .reservas form input[type="submit"] {
+  width: auto;
+  background-color: red;
+  color: white;
+  border: 0 none;
+  padding: 5px 15px;
+  font-size: 14px;
+}
+
+.reservas .grid-container-role .b .reservas input {
+  padding: 7px;
+  border: 1px solid black;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  font-family: montserrat;
+  color: #2C3E50;
+  font-size: 13px;
+}
+
+.reservas .grid-container-role .b .reservas input[type="date"] {
+  padding: 4.5px;
+}
+
+.reservas .grid-container-role .b .reservas input[type="submit"] {
+  padding: 4.5px;
+}
+
+@media only screen and (max-width: 950px) {
+  .reservas .grid-container-role .b .reservas {
+    width: 90%;
+    margin: 20vw auto;
+  }
+  .reservas .grid-container-role .b .reservas input[type="date"] {
+    width: 73%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .reservas .grid-container-role .b .reservas {
+    width: 90%;
+    margin: 30vw auto;
+  }
+}
+
+.reservas .grid-container-role .c {
+  grid-area: c;
+}
+
+/**
+* ! ------------------------ Template update user ------------------------bien
+*/
+.conta-acco {
+  height: 100%;
+  background: -prefix-linear-gradient(rgba(246, 157, 60, 0.5), rgba(63, 135, 166, 0.7));
+  background: linear-gradient(rgba(246, 157, 60, 0.5), rgba(63, 135, 166, 0.7));
+}
+
+.conta-acco #AccountTemplate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.conta-acco #AccountTemplate .container {
+  margin-top: 18rem;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  color: black;
+}
+
+.conta-acco #AccountTemplate .container input[type=text], .conta-acco #AccountTemplate .container input[type=email], .conta-acco #AccountTemplate .container input[type=password], .conta-acco #AccountTemplate .container select, .conta-acco #AccountTemplate .container textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+  color: black;
+  font-family: 'Raleway', sans-serif;
+  font-size: medium;
+}
+
+.conta-acco #AccountTemplate .container label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+  font-family: 'Raleway', sans-serif;
+  font-size: medium;
+  margin-bottom: 0;
+}
+
+.conta-acco #AccountTemplate .container input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+.conta-acco #AccountTemplate .container .col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.conta-acco #AccountTemplate .container .col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+  display: flex;
+  justify-items: center;
+  vertical-align: middle;
+  align-items: center;
+  align-content: center;
+}
+
+.conta-acco #AccountTemplate .container .col-75 input {
+  margin: auto 0;
+}
+
+@media screen and (max-width: 600px) {
+  .conta-acco #AccountTemplate .container .col-25, .conta-acco #AccountTemplate .container .col-75, .conta-acco #AccountTemplate .container input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .conta-acco #AccountTemplate .container {
+    margin-bottom: 6rem;
+    margin-top: 13rem;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .conta-acco #AccountTemplate .container {
+    margin-bottom: 6rem;
+    margin-top: 13rem;
+  }
+}
+
+.conta-acco #AccountTemplate .row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media only screen and (max-height: 940px) {
+  .conta-acco {
+    height: auto;
+  }
+}
+
+/**
+* ! ------------------------ Template workers list y clients list ------------------------bien
+*/
+.work-list {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.work-list .grid-container-role {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas: "a" "b" "c";
+}
+
+.work-list .grid-container-role .a {
+  grid-area: a;
+  position: fixed;
+  width: 100%;
+}
+
+.work-list .grid-container-role .a .top-header {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  z-index: 991;
+}
+
+.work-list .grid-container-role .a .top-header .principal-header {
+  position: fixed;
+  -webkit-transition: all .5s ease-out;
+  -moz-transition: all .5s ease-out;
+  -o-transition: all .5s ease-out;
+  transition: all .5s ease-out;
+  top: 0;
+  background: transparent;
+  -webkit-box-shadow: inset 0 0 0 3000px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 0 3000px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.work-list .grid-container-role .a .contain-menu .menu {
+  position: fixed;
+  left: -200vw;
+  z-index: 990;
+  color: #005c9c;
+  background: rgba(250, 250, 250, 0.7);
+  -webkit-clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+  width: 30vw;
+  height: 100vh;
+  padding: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: 300ms left cubic-bezier(0.77, 0, 0.175, 1);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.work-list .grid-container-role .a .contain-menu .menu p {
+  font-family: 'Raleway';
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.work-list .grid-container-role .a .contain-menu .menu p a {
+  color: black;
+}
+
+@media only screen and (max-width: 1000px) {
+  .work-list .grid-container-role .a .contain-menu .menu {
+    position: -webkit-fixed;
+    position: fixed;
+    height: 111vh;
+    width: 100vw;
+    left: -200vw;
+    text-align: center;
+    -webkit-clip-path: none;
+    clip-path: none;
+    -webkit-transition: all .5s ease-out;
+    -moz-transition: all .5s ease-out;
+    -o-transition: all .5s ease-out;
+    transition: all .5s ease-out;
+    padding: 0;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .work-list .grid-container-role .a .contain-menu .menu div {
+    overflow-y: auto;
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+    max-height: 100vh;
+  }
+}
+
+.work-list .grid-container-role .a .contain-menu .menu.active {
+  left: 0;
+}
+
+.work-list .grid-container-role .a .contain-menu .bgmenu {
+  left: -1000vw;
+  height: 100vh;
+  width: 100%;
+  background: inherit;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 989;
+  display: flex;
+  position: fixed;
+  transition: 300ms left cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+@media only screen and (max-height: 550px) {
+  .work-list .grid-container-role .a .contain-menu .bgmenu {
+    position: fixed;
+    height: 111vh;
+    webkit-transition: all .5s ease-out;
+    -moz-transition: all .5s ease-out;
+    -o-transition: all .5s ease-out;
+    transition: all .5s ease-out;
+  }
+}
+
+.work-list .grid-container-role .a .contain-menu .bgmenu.active {
+  left: 0;
+}
+
+.work-list .grid-container-role .a .addt {
+  -webkit-transition: all .5s ease-out;
+  -moz-transition: all .5s ease-out;
+  -o-transition: all .5s ease-out;
+  transition: all .5s ease-out;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  transition: all .3s linear;
+  -webkit-box-shadow: inset 0 0 0 3000px transparent;
+  box-shadow: inset 0 0 0 3000px transparent;
+  position: absolute;
+  z-index: 997;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: none;
+  background: -prefix-linear-gradient(rgba(246, 157, 60, 0.5), rgba(63, 135, 166, 0.7));
+  background: linear-gradient(rgba(246, 157, 60, 0.5), rgba(63, 135, 166, 0.7));
+  opacity: 0;
+}
+
+.work-list .grid-container-role .a .addt #add-client, .work-list .grid-container-role .a .addt #update-client {
+  display: flex;
+  align-items: center;
+  font-family: monospace;
+  justify-content: center;
+  background-color: transparent;
+}
+
+.work-list .grid-container-role .a .addt #add-client button.volver, .work-list .grid-container-role .a .addt #update-client button.volver {
+  margin-top: 30%;
+  width: 100%;
+  background-color: orange;
+  color: white;
+  background-color: light;
+  height: auto;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+}
+
+.work-list .grid-container-role .a .addt #add-client form, .work-list .grid-container-role .a .addt #update-client form {
+  margin: auto 0;
+  text-align: left;
+  font-family: 'Raleway', sans-serif;
+  color: black;
+  text-decoration: none;
+}
+
+.work-list .grid-container-role .a .addt #add-client form div label, .work-list .grid-container-role .a .addt #update-client form div label {
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.4;
+  color: white;
+}
+
+.work-list .grid-container-role .a .addt #add-client form div #id_username,
+.work-list .grid-container-role .a .addt #add-client form div #id_password,
+.work-list .grid-container-role .a .addt #add-client form div #id_password1,
+.work-list .grid-container-role .a .addt #add-client form div #id_password2,
+.work-list .grid-container-role .a .addt #add-client form div #id_email,
+.work-list .grid-container-role .a .addt #add-client form div #id_phone, .work-list .grid-container-role .a .addt #update-client form div #id_username,
+.work-list .grid-container-role .a .addt #update-client form div #id_password,
+.work-list .grid-container-role .a .addt #update-client form div #id_password1,
+.work-list .grid-container-role .a .addt #update-client form div #id_password2,
+.work-list .grid-container-role .a .addt #update-client form div #id_email,
+.work-list .grid-container-role .a .addt #update-client form div #id_phone {
+  width: 100%;
+  height: 30px;
+  opacity: .8;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  color: white;
+  margin-bottom: 10px;
+  font-size: large;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.work-list .grid-container-role .a .addt #add-client form input.register_button, .work-list .grid-container-role .a .addt #update-client form input.register_button {
+  width: 100%;
+  background-color: deepskyblue;
+  color: white;
+  background-color: light;
+  height: auto;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+}
+
+.work-list .grid-container-role .a .addt #add-client form p, .work-list .grid-container-role .a .addt #update-client form p {
+  color: white;
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.work-list .grid-container-role .a .addt #add-client form p.error-pass, .work-list .grid-container-role .a .addt #update-client form p.error-pass {
+  -backdrop-filter: blur(10px);
+  box-shadow: inset 0 0 0 3000px rgba(255, 0, 0, 0.308);
+  -webkit-backdrop-filter: blur(10px);
+  -webkit-box-shadow: inset 0 0 0 3000px rgba(255, 0, 0, 0.308);
+  border-radius: 4px;
+}
+
+.work-list .grid-container-role .b {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  grid-area: b;
+  height: auto;
+}
+
+.work-list .grid-container-role .b .workersList {
+  height: auto;
+  width: 85vw;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 8rem;
+  min-height: 100vh;
+}
+
+.work-list .grid-container-role .b .workersList p {
+  width: 100%;
+  height: auto;
+  text-align: center;
+  font-family: fuentean;
+  color: #fadc7b;
+  text-shadow: 0.1em 0.1em 0.2em black;
+  font-size: 6vw;
+  text-transform: uppercase;
+}
+
+.work-list .grid-container-role .b .workersList button.add {
+  font-family: 'Raleway', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: white;
+  width: 30%;
+  background-color: orange;
+  background-color: light;
+  height: auto;
+  border-radius: 4px;
+  padding: 5px 15px;
+  border: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+  margin-bottom: 5px;
+}
+
+@media only screen and (max-width: 600px) {
+  .work-list .grid-container-role .b .workersList button.add {
+    width: 90%;
+  }
+}
+
+.work-list .grid-container-role .b .workersList .table-responsive-final {
+  background-color: white;
+  margin: 0 auto;
+  border: solid black 2px;
+  width: 86vw;
+  overflow-x: scroll;
+}
+
+.work-list .grid-container-role .b .workersList .table-responsive-final table {
+  background-color: white;
+}
+
+.work-list .grid-container-role .b .workersList .table-responsive-final table thead {
+  background-color: cornflowerblue;
+}
+
+.work-list .grid-container-role .b .workersList .table-responsive-final table td, .work-list .grid-container-role .b .workersList .table-responsive-final table th {
+  text-align: center;
+  color: black;
+}
+
+.work-list .grid-container-role .b .workersList .table-responsive-final table .remove {
+  font-family: 'Raleway', sans-serif;
+  width: 100%;
+  background-color: red;
+  color: white;
+  background-color: light;
+  height: auto;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+  margin: 1.5px;
+}
+
+.work-list .grid-container-role .b .workersList .pagination {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 95px;
+}
+
+.work-list .grid-container-role .b .workersList .pagination .step-links {
+  width: 100%;
+  font-size: 1.5rem;
+}
+
+.work-list .grid-container-role .b .workersList .pagination .step-links .current {
+  font-family: 'Raleway';
+  color: greenyellow;
+  text-transform: uppercase;
+}
+
+.work-list .grid-container-role .b .workersList .pagination .step-links a {
+  font-family: 'Raleway';
+  color: white;
+  text-transform: capitalize;
+}
+
+.work-list .grid-container-role .b .workersList #id_phone,
+.work-list .grid-container-role .b .workersList #id_username,
+.work-list .grid-container-role .b .workersList #id_first_name,
+.work-list .grid-container-role .b .workersList #id_last_name,
+.work-list .grid-container-role .b .workersList #id_email,
+.work-list .grid-container-role .b .workersList #id_old_password,
+.work-list .grid-container-role .b .workersList #id_new_password1,
+.work-list .grid-container-role .b .workersList #id_new_password2 {
+  width: 100%;
+  height: 30px;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  color: black;
+  margin-bottom: 10px;
+  font-size: large;
+  background-color: rgba(170, 128, 65, 0.3);
+}
+
+.work-list .grid-container-role .b .workersList input[type="submit"] {
+  width: 50%;
+  background-color: deepskyblue;
+  color: white;
+  background-color: light;
+  height: auto;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+}
+
+.work-list .grid-container-role .b .workersList ul.errorlist {
+  -backdrop-filter: blur(10px);
+  box-shadow: inset 0 0 0 3000px rgba(255, 0, 0, 0.308);
+  -webkit-backdrop-filter: blur(10px);
+  -webkit-box-shadow: inset 0 0 0 3000px rgba(255, 0, 0, 0.308);
+  border-radius: 4px;
+}
+
+.work-list .grid-container-role .b .workersList ul.errorlist li {
+  color: white;
+}
+
+@media only screen and (max-width: 1000px) {
+  .work-list .grid-container-role .b .workersList {
+    padding-top: 10rem;
+  }
+}
+
+.work-list .grid-container-role .c {
+  grid-area: c;
+}
+
+/**
+* ! ------------------------ Template categorias y servicios y actualizar servicios y categorias ------------------------bien
+*/
+.cate-list {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.cate-list .grid-container-role {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas: "a" "b" "c";
+}
+
+.cate-list .grid-container-role .a {
+  grid-area: a;
+  position: fixed;
+  width: 100%;
+}
+
+.cate-list .grid-container-role .a .addt, .cate-list .grid-container-role .a .updt {
+  -webkit-transition: all .5s ease-out;
+  -moz-transition: all .5s ease-out;
+  -o-transition: all .5s ease-out;
+  transition: all .5s ease-out;
+  right: -2000px;
+  width: 100%;
+  height: 100vh;
+  transition: all .3s linear;
+  -webkit-box-shadow: inset 0 0 0 3000px transparent;
+  box-shadow: inset 0 0 0 3000px transparent;
+  position: absolute;
+  z-index: 997;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.4);
+  opacity: 0;
+}
+
+.cate-list .grid-container-role .a .addt #add-client, .cate-list .grid-container-role .a .addt #update-client, .cate-list .grid-container-role .a .updt #add-client, .cate-list .grid-container-role .a .updt #update-client {
+  display: flex;
+  align-items: center;
+  font-family: monospace;
+  justify-content: center;
+  background-color: transparent;
+}
+
+.cate-list .grid-container-role .a .addt #add-client button.volver, .cate-list .grid-container-role .a .addt #update-client button.volver, .cate-list .grid-container-role .a .updt #add-client button.volver, .cate-list .grid-container-role .a .updt #update-client button.volver {
+  margin-top: 30%;
+  width: 100%;
+  background-color: orange;
+  color: white;
+  background-color: light;
+  height: auto;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+}
+
+.cate-list .grid-container-role .a .addt #add-client form, .cate-list .grid-container-role .a .addt #update-client form, .cate-list .grid-container-role .a .updt #add-client form, .cate-list .grid-container-role .a .updt #update-client form {
+  margin: auto 0;
+  text-align: left;
+  font-family: 'Raleway', sans-serif;
+  color: black;
+  text-decoration: none;
+}
+
+.cate-list .grid-container-role .a .addt #add-client form div label, .cate-list .grid-container-role .a .addt #update-client form div label, .cate-list .grid-container-role .a .updt #add-client form div label, .cate-list .grid-container-role .a .updt #update-client form div label {
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.4;
+  color: black;
+}
+
+.cate-list .grid-container-role .a .addt #add-client form div #id_username,
+.cate-list .grid-container-role .a .addt #add-client form div #id_password,
+.cate-list .grid-container-role .a .addt #add-client form div #id_password1,
+.cate-list .grid-container-role .a .addt #add-client form div #id_password2,
+.cate-list .grid-container-role .a .addt #add-client form div #id_email,
+.cate-list .grid-container-role .a .addt #add-client form div #id_phone, .cate-list .grid-container-role .a .addt #update-client form div #id_username,
+.cate-list .grid-container-role .a .addt #update-client form div #id_password,
+.cate-list .grid-container-role .a .addt #update-client form div #id_password1,
+.cate-list .grid-container-role .a .addt #update-client form div #id_password2,
+.cate-list .grid-container-role .a .addt #update-client form div #id_email,
+.cate-list .grid-container-role .a .addt #update-client form div #id_phone, .cate-list .grid-container-role .a .updt #add-client form div #id_username,
+.cate-list .grid-container-role .a .updt #add-client form div #id_password,
+.cate-list .grid-container-role .a .updt #add-client form div #id_password1,
+.cate-list .grid-container-role .a .updt #add-client form div #id_password2,
+.cate-list .grid-container-role .a .updt #add-client form div #id_email,
+.cate-list .grid-container-role .a .updt #add-client form div #id_phone, .cate-list .grid-container-role .a .updt #update-client form div #id_username,
+.cate-list .grid-container-role .a .updt #update-client form div #id_password,
+.cate-list .grid-container-role .a .updt #update-client form div #id_password1,
+.cate-list .grid-container-role .a .updt #update-client form div #id_password2,
+.cate-list .grid-container-role .a .updt #update-client form div #id_email,
+.cate-list .grid-container-role .a .updt #update-client form div #id_phone {
+  width: 100%;
+  height: 30px;
+  opacity: 0.4;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  color: black;
+  margin-bottom: 10px;
+  font-size: large;
+  background-color: rgba(0, 0, 0, 0.289);
+}
+
+.cate-list .grid-container-role .a .addt #add-client form input.register_button, .cate-list .grid-container-role .a .addt #update-client form input.register_button, .cate-list .grid-container-role .a .updt #add-client form input.register_button, .cate-list .grid-container-role .a .updt #update-client form input.register_button {
+  width: 100%;
+  background-color: deepskyblue;
+  color: white;
+  background-color: light;
+  height: auto;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+}
+
+.cate-list .grid-container-role .a .addt #add-client form p, .cate-list .grid-container-role .a .addt #update-client form p, .cate-list .grid-container-role .a .updt #add-client form p, .cate-list .grid-container-role .a .updt #update-client form p {
+  color: white;
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.cate-list .grid-container-role .a .addt #add-client form p.error-pass, .cate-list .grid-container-role .a .addt #update-client form p.error-pass, .cate-list .grid-container-role .a .updt #add-client form p.error-pass, .cate-list .grid-container-role .a .updt #update-client form p.error-pass {
+  -backdrop-filter: blur(10px);
+  box-shadow: inset 0 0 0 3000px rgba(255, 0, 0, 0.308);
+  -webkit-backdrop-filter: blur(10px);
+  -webkit-box-shadow: inset 0 0 0 3000px rgba(255, 0, 0, 0.308);
+  border-radius: 4px;
+}
+
+.cate-list .grid-container-role .a .addt.active {
+  right: 0;
+  opacity: 1;
+  transition: all .3s linear;
+  overflow-y: auto;
+  height: 100vh;
+}
+
+.cate-list .grid-container-role .a .updt.active {
+  right: 0;
+  opacity: 1;
+  transition: all .3s linear;
+}
+
+.cate-list .grid-container-role .a .top-header {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  z-index: 991;
+}
+
+.cate-list .grid-container-role .a .top-header .principal-header {
+  position: fixed;
+  -webkit-transition: all .5s ease-out;
+  -moz-transition: all .5s ease-out;
+  -o-transition: all .5s ease-out;
+  transition: all .5s ease-out;
+  top: 0;
+  background: transparent;
+  -webkit-box-shadow: inset 0 0 0 3000px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 0 3000px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.cate-list .grid-container-role .a .contain-menu .menu {
+  position: fixed;
+  left: -200vw;
+  z-index: 990;
+  color: #005c9c;
+  background: rgba(250, 250, 250, 0.7);
+  -webkit-clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+  width: 30vw;
+  height: 100vh;
+  padding: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: 300ms left cubic-bezier(0.77, 0, 0.175, 1);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.cate-list .grid-container-role .a .contain-menu .menu p {
+  font-family: 'Raleway';
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.cate-list .grid-container-role .a .contain-menu .menu p a {
+  color: black;
+}
+
+@media only screen and (max-width: 1000px) {
+  .cate-list .grid-container-role .a .contain-menu .menu {
+    position: -webkit-fixed;
+    position: fixed;
+    height: 111vh;
+    width: 100vw;
+    left: -200vw;
+    text-align: center;
+    -webkit-clip-path: none;
+    clip-path: none;
+    -webkit-transition: all .5s ease-out;
+    -moz-transition: all .5s ease-out;
+    -o-transition: all .5s ease-out;
+    transition: all .5s ease-out;
+    padding: 0;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .cate-list .grid-container-role .a .contain-menu .menu div {
+    overflow-y: auto;
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+    max-height: 100vh;
+  }
+}
+
+.cate-list .grid-container-role .a .contain-menu .menu.active {
+  left: 0;
+}
+
+.cate-list .grid-container-role .a .contain-menu .bgmenu {
+  left: -1000vw;
+  height: 100vh;
+  width: 100%;
+  background: inherit;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 989;
+  display: flex;
+  position: fixed;
+  transition: 300ms left cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+@media only screen and (max-height: 550px) {
+  .cate-list .grid-container-role .a .contain-menu .bgmenu {
+    position: fixed;
+    height: 111vh;
+    webkit-transition: all .5s ease-out;
+    -moz-transition: all .5s ease-out;
+    -o-transition: all .5s ease-out;
+    transition: all .5s ease-out;
+  }
+}
+
+.cate-list .grid-container-role .a .contain-menu .bgmenu.active {
+  left: 0;
+}
+
+@media only screen and (max-height: 600px) {
+  .cate-list .grid-container-role .a .addt.active {
+    height: 100vh;
+    -webkit-transition: all .5s ease-out;
+    -moz-transition: all .5s ease-out;
+    -o-transition: all .5s ease-out;
+    transition: all .5s ease-out;
+  }
+  .cate-list .grid-container-role .a .addt.active #add-client {
+    height: 74vh;
+    overflow-y: auto;
+    padding-top: 60vh;
+    padding-bottom: 40vh;
+  }
+}
+
+.cate-list .grid-container-role .b {
+  grid-area: b;
+  height: auto;
+}
+
+.cate-list .grid-container-role .b .addcategory {
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  -webkit-transition: all .5s ease-out;
+  -moz-transition: all .5s ease-out;
+  -o-transition: all .5s ease-out;
+  transition: all .5s ease-out;
+}
+
+.cate-list .grid-container-role .b .addcategory div {
+  z-index: 997;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  width: 50%;
+  margin: 0 auto;
+  height: 60%;
+  box-shadow: inset 0 0 0 3000px rgba(0, 0, 0, 0.7);
+  -webkit-box-shadow: inset 0 0 0 3000px rgba(0, 0, 0, 0.7);
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.cate-list .grid-container-role .b .addcategory div form {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.cate-list .grid-container-role .b .addcategory div form table {
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  text-align: center;
+  color: white;
+  width: 100%;
+}
+
+.cate-list .grid-container-role .b .addcategory div form table th {
+  padding: 5px;
+}
+
+.cate-list .grid-container-role .b .addcategory div form #id_nombre_categoria,
+.cate-list .grid-container-role .b .addcategory div form #id_descripcion,
+.cate-list .grid-container-role .b .addcategory div form #id_nombre_servicio,
+.cate-list .grid-container-role .b .addcategory div form #id_precio,
+.cate-list .grid-container-role .b .addcategory div form #id_categoria,
+.cate-list .grid-container-role .b .addcategory div form #id_duracion {
+  width: 90%;
+  height: 30px;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  color: black;
+  margin-bottom: 10px;
+  font-size: large;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.cate-list .grid-container-role .b .addcategory div form #id_imagen {
+  width: 90%;
+  appearance: none;
+  background-color: initial;
+  cursor: default;
+  align-items: baseline;
+  color: inherit;
+  text-overflow: ellipsis;
+  white-space: pre;
+  text-align: start !important;
+  padding: initial;
+  border: initial;
+}
+
+.cate-list .grid-container-role .b .addcategory div form input[type="submit"] {
+  width: 50%;
+  background-color: deepskyblue;
+  color: white;
+  background-color: light;
+  height: auto;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+  margin: 20px;
+}
+
+.cate-list .grid-container-role .b .addcategory div form button.volver {
+  width: 50%;
+  background-color: orange;
+  color: white;
+  background-color: light;
+  height: auto;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+  margin-bottom: 20px;
+}
+
+.cate-list .grid-container-role .b .addservice {
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  -webkit-transition: all .5s ease-out;
+  -moz-transition: all .5s ease-out;
+  -o-transition: all .5s ease-out;
+  transition: all .5s ease-out;
+}
+
+.cate-list .grid-container-role .b .addservice div {
+  z-index: 997;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  width: 50%;
+  margin: 0 auto;
+  height: 60%;
+  box-shadow: inset 0 0 0 3000px rgba(0, 0, 0, 0.7);
+  -webkit-box-shadow: inset 0 0 0 3000px rgba(0, 0, 0, 0.7);
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.cate-list .grid-container-role .b .addservice div form {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.cate-list .grid-container-role .b .addservice div form table {
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  text-align: center;
+  color: white;
+  width: 100%;
+}
+
+.cate-list .grid-container-role .b .addservice div form table th {
+  padding: 5px;
+}
+
+.cate-list .grid-container-role .b .addservice div form #id_nombre_categoria,
+.cate-list .grid-container-role .b .addservice div form #id_descripcion,
+.cate-list .grid-container-role .b .addservice div form #id_nombre_servicio,
+.cate-list .grid-container-role .b .addservice div form #id_precio,
+.cate-list .grid-container-role .b .addservice div form #id_categoria,
+.cate-list .grid-container-role .b .addservice div form #id_duracion {
+  width: 90%;
+  height: 30px;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  color: black;
+  margin-bottom: 10px;
+  font-size: large;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.cate-list .grid-container-role .b .addservice div form #id_imagen {
+  width: 90%;
+  appearance: none;
+  background-color: initial;
+  cursor: default;
+  align-items: baseline;
+  color: inherit;
+  text-overflow: ellipsis;
+  white-space: pre;
+  text-align: start !important;
+  padding: initial;
+  border: initial;
+}
+
+.cate-list .grid-container-role .b .addservice div form input[type="submit"] {
+  width: 50%;
+  background-color: deepskyblue;
+  color: white;
+  background-color: light;
+  height: auto;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+  margin: 20px;
+}
+
+.cate-list .grid-container-role .b .addservice div form button {
+  width: 50%;
+  background-color: orange;
+  color: white;
+  background-color: light;
+  height: auto;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+  margin-bottom: 20px;
+}
+
+.cate-list .grid-container-role .b .addservice div form .volver {
+  background-color: orange;
+  width: 50%;
+  color: white;
+  background-color: light;
+  height: auto;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+  margin: 20px;
+}
+
+.cate-list .grid-container-role .b .addCategoryActive {
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  -webkit-transition: all .5s ease-out;
+  -moz-transition: all .5s ease-out;
+  -o-transition: all .5s ease-out;
+  transition: all .5s ease-out;
+}
+
+.cate-list .grid-container-role .b .addCategoryActive div {
+  z-index: 997;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  width: 50%;
+  margin: 0 auto;
+  height: 60%;
+  box-shadow: inset 0 0 0 3000px rgba(0, 0, 0, 0.7);
+  -webkit-box-shadow: inset 0 0 0 3000px rgba(0, 0, 0, 0.7);
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.cate-list .grid-container-role .b .addCategoryActive div form {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.cate-list .grid-container-role .b .addCategoryActive div form table {
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  text-align: center;
+  color: white;
+  width: 100%;
+}
+
+.cate-list .grid-container-role .b .addCategoryActive div form table th {
+  padding: 5px;
+}
+
+.cate-list .grid-container-role .b .addCategoryActive div form #id_nombre_categoria,
+.cate-list .grid-container-role .b .addCategoryActive div form #id_descripcion,
+.cate-list .grid-container-role .b .addCategoryActive div form #id_nombre_servicio,
+.cate-list .grid-container-role .b .addCategoryActive div form #id_precio,
+.cate-list .grid-container-role .b .addCategoryActive div form #id_categoria,
+.cate-list .grid-container-role .b .addCategoryActive div form #id_duracion {
+  width: 90%;
+  height: 30px;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  color: black;
+  margin-bottom: 10px;
+  font-size: large;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.cate-list .grid-container-role .b .addCategoryActive div form #id_imagen {
+  width: 90%;
+  appearance: none;
+  background-color: initial;
+  cursor: default;
+  align-items: baseline;
+  color: inherit;
+  text-overflow: ellipsis;
+  white-space: pre;
+  text-align: start !important;
+  padding: initial;
+  border: initial;
+}
+
+.cate-list .grid-container-role .b .addCategoryActive div form input[type="submit"] {
+  width: 50%;
+  background-color: deepskyblue;
+  color: white;
+  background-color: light;
+  height: auto;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+  margin: 20px;
+}
+
+.cate-list .grid-container-role .b .addCategoryActive div form button {
+  width: 50%;
+  background-color: orange;
+  color: white;
+  background-color: light;
+  height: auto;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+  margin-bottom: 20px;
+}
+
+.cate-list .grid-container-role .b .addCategoryActive div form .volver {
+  background-color: orange;
+  width: 50%;
+  color: white;
+  background-color: light;
+  height: auto;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+  margin: 20px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .cate-list .grid-container-role .b .addCategoryActive div {
+    width: 100%;
+    height: 100vh;
+  }
+  .cate-list .grid-container-role .b .addservice div {
+    width: 100%;
+    height: 100vh;
+  }
+  .cate-list .grid-container-role .b .addcategory div {
+    width: 100%;
+    height: 100vh;
+  }
+}
+
+.cate-list .grid-container-role .b .categoriesServicesList {
+  height: 100vh;
+}
+
+.cate-list .grid-container-role .b .categoriesServicesList .verticalCenter {
+  display: block;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.cate-list .grid-container-role .b .categoriesServicesList .verticalCenter .horizontalCenter {
+  width: 85%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.cate-list .grid-container-role .b .categoriesServicesList .verticalCenter .horizontalCenter .containerCategoriesServices {
+  margin: 0 auto;
+}
+
+.cate-list .grid-container-role .b .categoriesServicesList .verticalCenter .horizontalCenter .containerCategoriesServices button {
+  display: inline-block;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  color: white;
+  width: 15%;
+  min-width: 200px;
+  background-color: orange;
+  border-radius: 4px;
+  padding: 5px 15px;
+  border: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+  margin: 1.5vw;
+  text-transform: capitalize;
+}
+
+.cate-list .grid-container-role .b .categoriesServicesList .verticalCenter .horizontalCenter .containerCategoriesServices .containerWhiteBlur {
+  list-style: none;
+  font-family: 'Raleway', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  z-index: 997;
+  box-shadow: inset 0 0 0 3000px rgba(255, 255, 255, 0.9);
+  -webkit-box-shadow: inset 0 0 0 3000px rgba(255, 255, 255, 0.9);
+  border-radius: 5px;
+  padding: 14px;
+  padding-top: 0;
+  margin-top: 1vh;
+  overflow-y: auto;
+  height: 55vh;
+}
+
+.cate-list .grid-container-role .b .categoriesServicesList .verticalCenter .horizontalCenter .containerCategoriesServices .containerWhiteBlur fieldset {
+  border-radius: 5px;
+  border: 1px solid black;
+  padding: 1.5vh;
+}
+
+.cate-list .grid-container-role .b .categoriesServicesList .verticalCenter .horizontalCenter .containerCategoriesServices .containerWhiteBlur fieldset legend {
+  text-align: CENTER;
+  display: flex;
+  width: auto;
+  padding-top: 10px;
+  text-transform: capitalize;
+  color: black;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.cate-list .grid-container-role .b .categoriesServicesList .verticalCenter .horizontalCenter .containerCategoriesServices .containerWhiteBlur fieldset legend span {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.cate-list .grid-container-role .b .categoriesServicesList .verticalCenter .horizontalCenter .containerCategoriesServices .containerWhiteBlur fieldset legend a {
+  color: black;
+}
+
+.cate-list .grid-container-role .b .categoriesServicesList .verticalCenter .horizontalCenter .containerCategoriesServices .containerWhiteBlur fieldset legend form {
+  display: inline-block;
+}
+
+.cate-list .grid-container-role .b .categoriesServicesList .verticalCenter .horizontalCenter .containerCategoriesServices .containerWhiteBlur fieldset legend form i.fa-minus-circle {
+  color: red;
+}
+
+.cate-list .grid-container-role .b .categoriesServicesList .verticalCenter .horizontalCenter .containerCategoriesServices .containerWhiteBlur .services {
+  padding-bottom: 10px;
+}
+
+.cate-list .grid-container-role .b .categoriesServicesList .verticalCenter .horizontalCenter .containerCategoriesServices .containerWhiteBlur .services li {
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  text-transform: capitalize;
+  color: black;
+}
+
+.cate-list .grid-container-role .b .categoriesServicesList .verticalCenter .horizontalCenter .containerCategoriesServices .containerWhiteBlur .services li a {
+  color: black;
+}
+
+.cate-list .grid-container-role .b .categoriesServicesList .verticalCenter .horizontalCenter .containerCategoriesServices .containerWhiteBlur .services li a i.fa-minus-circle {
+  color: red;
+}
+
+.cate-list .grid-container-role .b .categoriesServicesList .verticalCenter .horizontalCenter .containerCategoriesServices .containerWhiteBlur .services li form {
+  display: inline-block;
+}
+
+.cate-list .grid-container-role .b .categoriesServicesList .verticalCenter .horizontalCenter .containerCategoriesServices .containerWhiteBlur .services li form i.fa-minus-circle {
+  color: red;
+}
+
+@media only screen and (max-height: 625px) {
+  .cate-list .grid-container-role .b .categoriesServicesList .verticalCenter .horizontalCenter .containerCategoriesServices {
+    margin-top: 26vh;
+  }
+  .cate-list .grid-container-role .b .categoriesServicesList .verticalCenter .horizontalCenter .containerCategoriesServices .containerWhiteBlur {
+    overflow-y: auto;
+    height: 45vh;
+  }
+}
+
+.cate-list .grid-container-role .c {
+  grid-area: c;
+}
+
+/**
+* ! ------------------------ Template hours list ------------------------bien
+*/
+.hora-list {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.hora-list .grid-container-role-hora {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas: "a" "b" "c";
+}
+
+.hora-list .grid-container-role-hora .a {
+  grid-area: a;
+  position: fixed;
+  width: 100%;
+}
+
+.hora-list .grid-container-role-hora .a .top-header {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  z-index: 991;
+}
+
+.hora-list .grid-container-role-hora .a .top-header .principal-header {
+  position: fixed;
+  -webkit-transition: all .5s ease-out;
+  -moz-transition: all .5s ease-out;
+  -o-transition: all .5s ease-out;
+  transition: all .5s ease-out;
+  top: 0;
+  background: transparent;
+  -webkit-box-shadow: inset 0 0 0 3000px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 0 3000px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.hora-list .grid-container-role-hora .a .contain-menu .menu {
+  position: fixed;
+  left: -200vw;
+  z-index: 990;
+  color: #005c9c;
+  background: rgba(250, 250, 250, 0.7);
+  -webkit-clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+  width: 30vw;
+  height: 100vh;
+  padding: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: 300ms left cubic-bezier(0.77, 0, 0.175, 1);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.hora-list .grid-container-role-hora .a .contain-menu .menu p {
+  font-family: 'Raleway';
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.hora-list .grid-container-role-hora .a .contain-menu .menu p a {
+  color: black;
+}
+
+@media only screen and (max-width: 1000px) {
+  .hora-list .grid-container-role-hora .a .contain-menu .menu {
+    position: -webkit-fixed;
+    position: fixed;
+    height: 111vh;
+    width: 100vw;
+    left: -200vw;
+    text-align: center;
+    -webkit-clip-path: none;
+    clip-path: none;
+    -webkit-transition: all .5s ease-out;
+    -moz-transition: all .5s ease-out;
+    -o-transition: all .5s ease-out;
+    transition: all .5s ease-out;
+    padding: 0;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .hora-list .grid-container-role-hora .a .contain-menu .menu div {
+    overflow-y: auto;
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+    max-height: 100vh;
+  }
+}
+
+.hora-list .grid-container-role-hora .a .contain-menu .menu.active {
+  left: 0;
+}
+
+.hora-list .grid-container-role-hora .a .contain-menu .bgmenu {
+  left: -1000vw;
+  height: 100vh;
+  width: 100%;
+  background: inherit;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 989;
+  display: flex;
+  position: fixed;
+  transition: 300ms left cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+@media only screen and (max-height: 550px) {
+  .hora-list .grid-container-role-hora .a .contain-menu .bgmenu {
+    position: fixed;
+    height: 111vh;
+    webkit-transition: all .5s ease-out;
+    -moz-transition: all .5s ease-out;
+    -o-transition: all .5s ease-out;
+    transition: all .5s ease-out;
+  }
+}
+
+.hora-list .grid-container-role-hora .a .contain-menu .bgmenu.active {
+  left: 0;
+}
+
+.hora-list .grid-container-role-hora .b {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  grid-area: b;
+  height: auto;
+}
+
+.hora-list .grid-container-role-hora .b .hoursList {
+  height: auto;
+  width: 85vw;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 8rem;
+  min-height: 100vh;
+}
+
+.hora-list .grid-container-role-hora .b .hoursList .pagination {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 95px;
+}
+
+.hora-list .grid-container-role-hora .b .hoursList .pagination .step-links {
+  width: 100%;
+  font-size: 1.5rem;
+}
+
+.hora-list .grid-container-role-hora .b .hoursList .pagination .step-links .current {
+  font-family: 'Raleway';
+  color: greenyellow;
+  text-transform: uppercase;
+}
+
+.hora-list .grid-container-role-hora .b .hoursList .pagination .step-links a {
+  font-family: 'Raleway';
+  color: white;
+  text-transform: capitalize;
+}
+
+.hora-list .grid-container-role-hora .b .hoursList p {
+  width: 100%;
+  height: auto;
+  text-align: center;
+  font-family: fuentean;
+  color: #fadc7b;
+  text-shadow: 0.1em 0.1em 0.2em black;
+  font-size: 6vw;
+  text-transform: uppercase;
+}
+
+.hora-list .grid-container-role-hora .b .hoursList .inphor {
+  background-color: rgba(100, 148, 237, 0.521);
+  font-family: 'Lobster Two', cursive;
+  color: white;
+  text-align: center;
+}
+
+.hora-list .grid-container-role-hora .b .hoursList .inphor label {
+  font-size: 1.5rem;
+}
+
+.hora-list .grid-container-role-hora .b .hoursList .inphor input[type="submit"] {
+  margin: 5px;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: none;
+  width: 90%;
+  background: orange;
+}
+
+.hora-list .grid-container-role-hora .b .hoursList .inphor input[type="time"] {
+  margin: 5px;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: none;
+  width: 90%;
+  background: white;
+}
+
+.hora-list .grid-container-role-hora .b .hoursList button.add {
+  font-family: 'Raleway', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: white;
+  width: 30%;
+  background-color: orange;
+  background-color: light;
+  height: auto;
+  border-radius: 4px;
+  padding: 5px 15px;
+  border: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+  margin-bottom: 5px;
+}
+
+@media only screen and (max-width: 350px) {
+  .hora-list .grid-container-role-hora .b .hoursList button.add {
+    width: 60%;
+  }
+}
+
+.hora-list .grid-container-role-hora .b .hoursList .table-responsive-final {
+  margin: 0 auto;
+  border: solid black 2px;
+  width: 86vw;
+  background-color: rgba(100, 148, 237, 0.521);
+}
+
+.hora-list .grid-container-role-hora .b .hoursList .table-responsive-final table {
+  background-color: white;
+  width: 100.02%;
+}
+
+.hora-list .grid-container-role-hora .b .hoursList .table-responsive-final table thead {
+  background-color: rgba(100, 148, 237, 0.521);
+}
+
+.hora-list .grid-container-role-hora .b .hoursList .table-responsive-final table th {
+  border-top: none;
+  border-right: none;
+}
+
+.hora-list .grid-container-role-hora .b .hoursList .table-responsive-final table td, .hora-list .grid-container-role-hora .b .hoursList .table-responsive-final table th {
+  text-align: center;
+  color: black;
+}
+
+.hora-list .grid-container-role-hora .b .hoursList .table-responsive-final table .remove {
+  font-family: 'Raleway', sans-serif;
+  width: 100%;
+  background-color: red;
+  color: white;
+  background-color: light;
+  height: auto;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+  margin: 1.5px;
+}
+
+.hora-list .grid-container-role-hora .b .hoursList #id_phone,
+.hora-list .grid-container-role-hora .b .hoursList #id_username,
+.hora-list .grid-container-role-hora .b .hoursList #id_first_name,
+.hora-list .grid-container-role-hora .b .hoursList #id_last_name,
+.hora-list .grid-container-role-hora .b .hoursList #id_email,
+.hora-list .grid-container-role-hora .b .hoursList #id_old_password,
+.hora-list .grid-container-role-hora .b .hoursList #id_new_password1,
+.hora-list .grid-container-role-hora .b .hoursList #id_new_password2 {
+  width: 100%;
+  height: 30px;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  color: black;
+  margin-bottom: 10px;
+  font-size: large;
+  background-color: rgba(170, 128, 65, 0.3);
+}
+
+.hora-list .grid-container-role-hora .b .hoursList input[type="submit"] {
+  width: 50%;
+  background-color: deepskyblue;
+  color: white;
+  background-color: light;
+  height: auto;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+}
+
+.hora-list .grid-container-role-hora .b .hoursList ul.errorlist {
+  -backdrop-filter: blur(10px);
+  box-shadow: inset 0 0 0 3000px rgba(255, 0, 0, 0.308);
+  -webkit-backdrop-filter: blur(10px);
+  -webkit-box-shadow: inset 0 0 0 3000px rgba(255, 0, 0, 0.308);
+  border-radius: 4px;
+}
+
+.hora-list .grid-container-role-hora .b .hoursList ul.errorlist li {
+  color: white;
+}
+
+@media only screen and (max-height: 600px) {
+  .hora-list .grid-container-role-hora .b .hoursList .horizontalCenter p {
+    margin-top: 90px;
+    margin-bottom: 0;
+    font-size: 9vh;
+  }
+  .hora-list .grid-container-role-hora .b .hoursList .horizontalCenter .table-responsive-final {
+    overflow-y: scroll;
+    height: 35vh;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .hora-list .grid-container-role-hora .b .hoursList {
+    padding-top: 10rem;
+  }
+}
+
+.hora-list .grid-container-role-hora .c {
+  grid-area: c;
+}
+
+/**
+* ! ------------------------ Template galery list ------------------------bien
+*/
+.galery-list {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.galery-list .grid-container-role-galery {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas: "a" "b" "c";
+}
+
+.galery-list .grid-container-role-galery .a {
+  grid-area: a;
+  position: fixed;
+  width: 100%;
+}
+
+.galery-list .grid-container-role-galery .a .top-header {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  z-index: 991;
+}
+
+.galery-list .grid-container-role-galery .a .top-header .principal-header {
+  position: fixed;
+  -webkit-transition: all .5s ease-out;
+  -moz-transition: all .5s ease-out;
+  -o-transition: all .5s ease-out;
+  transition: all .5s ease-out;
+  top: 0;
+  background: transparent;
+  -webkit-box-shadow: inset 0 0 0 3000px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 0 3000px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.galery-list .grid-container-role-galery .a .contain-menu .menu {
+  position: fixed;
+  left: -200vw;
+  z-index: 990;
+  color: #005c9c;
+  background: rgba(250, 250, 250, 0.7);
+  -webkit-clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+  width: 30vw;
+  height: 100vh;
+  padding: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: 300ms left cubic-bezier(0.77, 0, 0.175, 1);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.galery-list .grid-container-role-galery .a .contain-menu .menu p {
+  font-family: 'Raleway';
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.galery-list .grid-container-role-galery .a .contain-menu .menu p a {
+  color: black;
+}
+
+@media only screen and (max-width: 1000px) {
+  .galery-list .grid-container-role-galery .a .contain-menu .menu {
+    position: -webkit-fixed;
+    position: fixed;
+    height: 111vh;
+    width: 100vw;
+    left: -200vw;
+    text-align: center;
+    -webkit-clip-path: none;
+    clip-path: none;
+    -webkit-transition: all .5s ease-out;
+    -moz-transition: all .5s ease-out;
+    -o-transition: all .5s ease-out;
+    transition: all .5s ease-out;
+    padding: 0;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .galery-list .grid-container-role-galery .a .contain-menu .menu div {
+    overflow-y: auto;
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+    max-height: 100vh;
+  }
+}
+
+.galery-list .grid-container-role-galery .a .contain-menu .menu.active {
+  left: 0;
+}
+
+.galery-list .grid-container-role-galery .a .contain-menu .bgmenu {
+  left: -1000vw;
+  height: 100vh;
+  width: 100%;
+  background: inherit;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 989;
+  display: flex;
+  position: fixed;
+  transition: 300ms left cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+@media only screen and (max-height: 550px) {
+  .galery-list .grid-container-role-galery .a .contain-menu .bgmenu {
+    position: fixed;
+    height: 111vh;
+    webkit-transition: all .5s ease-out;
+    -moz-transition: all .5s ease-out;
+    -o-transition: all .5s ease-out;
+    transition: all .5s ease-out;
+  }
+}
+
+.galery-list .grid-container-role-galery .a .contain-menu .bgmenu.active {
+  left: 0;
+}
+
+.galery-list .grid-container-role-galery .b {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  grid-area: b;
+  height: auto;
+}
+
+.galery-list .grid-container-role-galery .b .galerylist {
+  height: auto;
+  width: 85vw;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 8rem;
+  min-height: 100vh;
+}
+
+.galery-list .grid-container-role-galery .b .galerylist .fullscreen {
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999999;
+  display: none;
+}
+
+.galery-list .grid-container-role-galery .b .galerylist .fullscreen .container {
+  padding: 0;
+  position: absolute;
+  width: auto;
+  top: auto;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.galery-list .grid-container-role-galery .b .galerylist .fullscreen .container .row, .galery-list .grid-container-role-galery .b .galerylist .fullscreen .container .row > div {
+  border: none;
+  margin: 0 0;
+  padding: 0 0;
+}
+
+.galery-list .grid-container-role-galery .b .galerylist .fullscreen .row > div img {
+  width: 100%;
+}
+
+.galery-list .grid-container-role-galery .b .galerylist .pagination {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 95px;
+}
+
+.galery-list .grid-container-role-galery .b .galerylist .pagination .step-links {
+  width: 100%;
+  font-size: 1.5rem;
+}
+
+.galery-list .grid-container-role-galery .b .galerylist .pagination .step-links .current {
+  font-family: 'Raleway';
+  color: greenyellow;
+  text-transform: uppercase;
+}
+
+.galery-list .grid-container-role-galery .b .galerylist .pagination .step-links a {
+  font-family: 'Raleway';
+  color: white;
+  text-transform: capitalize;
+}
+
+.galery-list .grid-container-role-galery .b .galerylist p {
+  width: 100%;
+  height: auto;
+  text-align: center;
+  font-family: fuentean;
+  color: #fadc7b;
+  text-shadow: 0.1em 0.1em 0.2em black;
+  font-size: 6vw;
+  text-transform: uppercase;
+}
+
+.galery-list .grid-container-role-galery .b .galerylist .inphor {
+  background-color: rgba(100, 148, 237, 0.521);
+  font-family: 'Lobster Two', cursive;
+  color: white;
+  text-align: center;
+}
+
+.galery-list .grid-container-role-galery .b .galerylist .inphor label {
+  font-size: 1.5rem;
+}
+
+.galery-list .grid-container-role-galery .b .galerylist .inphor input[type="submit"] {
+  margin: 5px;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: none;
+  width: 90%;
+  background: orange;
+}
+
+.galery-list .grid-container-role-galery .b .galerylist .inphor input[type=file] {
+  display: block;
+  margin: 0 auto;
+  font-size: 1.5rem;
+}
+
+.galery-list .grid-container-role-galery .b .galerylist .inphor input[type=text] {
+  margin: 5px;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: none;
+  width: 90%;
+  background: white;
+}
+
+.galery-list .grid-container-role-galery .b .galerylist .table-responsive-final {
+  margin: 0 auto;
+  border: solid black 2px;
+  width: 86vw;
+  background-color: rgba(100, 148, 237, 0.521);
+  text-align: center;
+}
+
+.galery-list .grid-container-role-galery .b .galerylist .table-responsive-final table {
+  background-color: white;
+  width: 100%;
+}
+
+.galery-list .grid-container-role-galery .b .galerylist .table-responsive-final table thead {
+  background-color: rgba(100, 148, 237, 0.521);
+}
+
+.galery-list .grid-container-role-galery .b .galerylist .table-responsive-final table th {
+  border-top: none;
+  border-right: none;
+}
+
+.galery-list .grid-container-role-galery .b .galerylist .table-responsive-final table td, .galery-list .grid-container-role-galery .b .galerylist .table-responsive-final table th {
+  text-align: center;
+  color: black;
+}
+
+.galery-list .grid-container-role-galery .b .galerylist .table-responsive-final table .remove {
+  font-family: 'Raleway', sans-serif;
+  background-color: red;
+  color: white;
+  background-color: light;
+  height: auto;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+  margin: 1.5px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .galery-list .grid-container-role-galery .b .galerylist {
+    padding-top: 10rem;
+  }
+  .galery-list .grid-container-role-galery .b .galerylist .inphor input[type=file] {
+    font-size: .8rem;
+  }
+}
+
+.galery-list .grid-container-role-galery .c {
+  grid-area: c;
+}

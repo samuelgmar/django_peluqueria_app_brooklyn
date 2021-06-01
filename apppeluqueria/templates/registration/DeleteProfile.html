@@ -1,0 +1,8 @@
+{% block content %}
+<p>Estas seguro de que quieres borrar el perfil de "{{ item }}"</p>
+<form method="post">
+{% csrf_token %}
+<a href="{% url 'users' %}">Cancel</a>
+<input type="submit" name="confirm" value="borrar">
+</form>
+{% endblock %}

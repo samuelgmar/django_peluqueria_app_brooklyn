@@ -1,0 +1,75 @@
+{% load static %}
+{% block head %}
+    <script src="{% static '/lib/Highcharts-9.0.1/code/highcharts.js' %}"></script>
+    <script src="{% static '/lib/Highcharts-9.0.1/code/modules/exporting.js' %}"></script>
+    <script src="{% static '/lib/Highcharts-9.0.1/code/modules/export-data.js' %}"></script>
+    <script src="{% static '/lib/Highcharts-9.0.1/code/modules/accessibility.js' %}"></script>
+{% endblock %}
+<div class="inicio">
+    <div id="container"></div>
+    <h1 class="title">Servicios de "{{ user.username }}"</h1>
+    <p>Un buen jefe como tu podria hacer lo siguiente:</p>
+    <div>
+        <div style="display:block;align-items:center;">
+            <div class="container-fluid">
+                <figure class="highcharts-figure">
+                    <div id="container"></div>
+                </figure>
+            </div>
+        </div>
+    </div>
+</div> 
+<div id="container"></div>
+<script defer type="application/javascript">
+    Highcharts.chart('container', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Usuarios Registrados'
+        },
+        xAxis: {
+            categories: [
+                'Ene',
+                'Feb',
+                'Mar',
+                'Abr',
+                'May',
+                'Jun',
+                'Jul',
+                'Ago',
+                'Sep',
+                'Oct',
+                'Nov',
+                'Dic'
+            ],
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Usuarios'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: 'Usuarios',
+            showInLegend: false,
+            data: [{{ enero }}, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
+    
+        }]
+    });
+    </script>
